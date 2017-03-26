@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('birthday');
             $table->integer('willaya');
-            $table->string('fb_profil');
             $table->string('password', 60);
             $table->string('role');
             $table->integer('medias_id');
