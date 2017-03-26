@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*-----------------
+    Frontend
+-----------------*/
+
+// inscription
+Route::post('inscription' , array('as' => 'inscription', 'uses' =>  'FrontEndController@getSignin') ) ;
+Route::get('inscription' , array('as' => 'inscription', 'uses' =>  'FrontEndController@getSignin') ) ;
+
