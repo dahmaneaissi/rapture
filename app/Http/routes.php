@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::controller('admin/users',
+    'Admin\UserController',
+    array(
+        'getIndex' => 'users',
+        'postSave' => 'post.user'
+    )
+);
+
 /*-----------------
     Frontend
 -----------------*/
@@ -23,3 +31,6 @@ Route::get('/', function () {
 Route::post('inscription' , array('as' => 'inscription', 'uses' =>  'FrontEndController@getSignin') ) ;
 Route::get('inscription' , array('as' => 'inscription', 'uses' =>  'FrontEndController@getSignin') ) ;
 
+Form::macro('date', function() {
+    return '<input class="form-control" name="birthday" type="date" autocomplete="off">';
+});
