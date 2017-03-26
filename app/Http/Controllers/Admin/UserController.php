@@ -23,7 +23,7 @@ class UserController extends Controller {
 
     public function __construct()
     {
-        $this->middleware('auth.admin', ['except' => ['postSave']]);
+        $this->middleware('auth', ['except' => ['postSave']]);
     }
 
     public function getIndex()
