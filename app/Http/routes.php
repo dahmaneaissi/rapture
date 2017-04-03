@@ -15,13 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller('admin/users',
+Route::controller('admin',
+    'Admin\DashboardController',
+    array(
+        'getIndex' => 'dashbord.index'
+    )
+);
+
+/*Route::controller('admin',
     'Admin\UserController',
     array(
         'getIndex' => 'users',
         'postSave' => 'post.user'
     )
-);
+);*/
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
