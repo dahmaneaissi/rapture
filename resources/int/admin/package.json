@@ -1,0 +1,22 @@
+{
+  "name": "bioshock",
+  "version": "1.0.0",
+  "description": "Frontend workflow",
+  "author": {
+    "name" : "Dahmane Aissi",
+    "email" : "aissi.dahmane@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-ejs": "^2.1.1",
+    "gulp-less": "^3.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.4",
+    "gulp-uglifycss": "^1.0.6",
+    "merge-stream": "^1.0.0"
+  }
+}

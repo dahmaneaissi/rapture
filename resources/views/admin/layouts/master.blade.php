@@ -11,14 +11,8 @@
 
     <title>{{ $title }}</title>
 
-    <!-- Bootstrap Core CSS -->
-    {!! Html::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') !!}
-    {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css') !!}
-    {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') !!}
+    {!! Html::style('dist/admin/css/style.min.css') !!}
 
-            <!-- Custom CSS -->
-    {!! Html::style('dist/admin/css/AdminLTE.min.css') !!}
-    {!! Html::style('dist/admin/css/skins/_all-skins.min.css') !!}
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -46,11 +40,7 @@
 <!-- ./wrapper -->
 
 
-
-{!! Html::script('//code.jquery.com/jquery-2.2.3.min.js') !!}
-{!! Html::script('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js') !!}
 {!! Html::script('dist/admin/js/app.min.js') !!}
-{!! Html::script('dist/admin/js/demo.js') !!}
 
 @yield('foot')
 

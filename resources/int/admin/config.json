@@ -1,0 +1,49 @@
+{
+  "sources": {
+    "less": "src/less",
+    "fonts": "src/fonts",
+    "media": "src/media",
+    "vendorScriptsPath": "src/vendors/bower/bootstrap/js",
+    "customScriptsPath": "src/scripts",
+    "templates": "src/templates"
+  },
+  "destination": {
+    "styles": "../../../public/dist/admin/css",
+    "stylesImages": "../../../public/dist/admin/css/images",
+    "fonts": "../../../public/dist/admin/fonts",
+    "scripts": "../../../public/dist/admin/js",
+    "media": "../../../public/dist/admin/media",
+    "pages": "dist",
+    "version": "dist/assets"
+  },
+  "theme": {
+    "styles": "../../../public/dist/admin/css",
+    "stylesImages": "../../../public/dist/admin/css/images",
+    "scripts": "../../../public/dist/admin/js",
+    "fonts": "../../../public/dist/admin/fonts",
+    "media": "../../../public/dist/admin/media",
+    "version": "../../../public/dist/admin/"
+  },
+  "collections": {
+    "vendorScripts": [
+      "src/vendors/bower/jquery/dist/jquery.js",
+      "src/vendors/bower/bootstrap/js/transition.js",
+      "src/vendors/bower/bootstrap/js/alert.js",
+      "src/vendors/bower/bootstrap/js/button.js",
+      "src/vendors/bower/bootstrap/js/carousel.js",
+      "src/vendors/bower/bootstrap/js/collapse.js",
+      "src/vendors/bower/bootstrap/js/dropdown.js",
+      "src/vendors/bower/bootstrap/js/modal.js",
+      "src/vendors/bower/bootstrap/js/tooltip.js",
+      "src/vendors/bower/bootstrap/js/popover.js",
+      "src/vendors/bower/bootstrap/js/scrollspy.js",
+      "src/vendors/bower/bootstrap/js/tab.js",
+      "src/vendors/bower/bootstrap/js/affix.js"
+    ],
+    "customScripts": [
+      "src/vendors/bower/admin-lte/dist/js/app.js",
+      "src/vendors/bower/admin-lte/dist/js/demo.js",
+      "src/scripts/application.js"
+    ]
+  }
+}

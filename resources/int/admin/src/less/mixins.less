@@ -1,0 +1,24 @@
+.blur(@value: 2px) {
+    -webkit-filter: blur(@value);
+    -moz-filter: blur(@value);
+    -o-filter: blur(@value);
+    -ms-filter: blur(@value);
+    filter: blur(@value);
+}
+
+.brightness( @value: 50% ){
+    filter: brightness(@value);
+    -webkit-filter: brightness(@value);
+    -moz-filter: brightness(@value);
+    -o-filter: brightness(@value);
+    -ms-filter: brightness(@value);
+}
+
+.blur-brightness( @value1 : 2px , @value2 : 50%  )
+{
+    -webkit-filter: blur(@value1) brightness(@value2);
+    -moz-filter: blur(@value1) brightness(@value2);
+    -o-filter: blur(@value1) brightness(@value2);
+    -ms-filter: blur(@value1) brightness(@value2);
+    filter: blur(@value1) brightness(@value2);
+}
