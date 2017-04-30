@@ -6,3 +6,9 @@ Homestead.json
 
 #project
 .idea
+
+#frontend workflow
+resources/int/admin/node_modules
+resources/int/admin/src/vendors
+
+
