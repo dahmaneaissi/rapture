@@ -15,11 +15,12 @@
 
         <div class="callout callout-info">
             <h4>Reminder!</h4>
-            <ul>
-                <li>Je ferai la cuisine, tu parleras !</li>
-                <li>Tu veux que je parle ? Avec des mots ? pourquoi crois tu qu’ils ont inventé les fleurs ?!</li>
-            </ul>
 
+            <ul>
+                <li>C’est moi le meilleur en italien donc c’est moi ton cavalier, Donovitz c’est le deuxième meilleur se sera ton cameraman italien et Omar c’est le troisième meilleur il fera l’assistant de Doni.</li>
+                <li>Mais je cause pas italien !</li>
+                <li>Ouais c’est ce que je dit t’es le troisième meilleur. Il suffit que tu fermes ta gueule ! Je serais toi je m’entrainerais tout de suite...</li>
+            </ul>
 
         </div>
 
