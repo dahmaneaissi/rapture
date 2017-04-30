@@ -33,9 +33,6 @@
 
     @include('admin/global/footer')
 
-    <!-- Control Sidebar -->
-    @include('admin/global/control-sidebar')
-
 </div>
 <!-- ./wrapper -->
 
