@@ -33,7 +33,7 @@
         <ul class="nav" id="side-menu">
             <li class="sidebar-search">
                 <div class="input-group custom-search-form">
-                    <a class="navbar-brand" href="#"><i class="fa fa-photo"></i> 4 millions de fans</a>
+                    <a class="navbar-brand" href="#"><i class="fa fa-photo"></i></a>
                 </div>
                 <!-- /input-group -->
             </li>
