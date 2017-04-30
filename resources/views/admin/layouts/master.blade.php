@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ $title }}</title>
+    <title>{{ !empty($title) ? $title : '' }}</title>
 
     {!! Html::style('dist/admin/css/style.min.css') !!}
 

@@ -5,29 +5,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Administration</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
 
-    <!-- Bootstrap Core CSS -->
-    {!! Html::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') !!}
-    {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css') !!}
-    {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') !!}
-
-            <!-- Custom CSS -->
-    {!! Html::style('dist/admin/css/AdminLTE.min.css') !!}
-    {!! Html::style('dist/admin/css/skins/_all-skins.min.css') !!}
+    {!! Html::style('dist/admin/css/style.min.css') !!}
 
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <a href="#"><b>Admin</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">
+            Connectez-vous
+        </p>
 
         <form action="/auth/login" method="post">
             {!! csrf_field() !!}
@@ -67,5 +59,7 @@
         });
     });
 </script>
+
+{!! Html::script('dist/admin/js/app.min.js') !!}
 </body>
 </html>
