@@ -15,12 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller('admin',
-    'Admin\DashboardController',
-    array(
-        'getIndex' => 'dashbord.index'
-    )
-);
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::controller('admin',
+        'Admin\DashboardController',
+        array(
+            'getIndex' => 'dashbord.index'
+        )
+    );
+    Route::controller('users',
+        'UserController',
+        array(
+            'getIndex' => 'users.index'
+        )
+    );
+});
+
+
+
+
 
 /*Route::controller('admin',
     'Admin\UserController',

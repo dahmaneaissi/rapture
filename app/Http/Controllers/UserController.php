@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -6,20 +6,15 @@ use App\User;
 
 use App\Http\Requests\createUserRequest;
 
-use App\Models\Admin\Media;
-
 use Auth;
 use Config;
 use Redirect;
 
-use Facebook\FacebookSession;
-use Facebook\FacebookRequest;
-use Facebook\GraphUser;
 
 
 class UserController extends Controller {
 
-    public $limit = 100;
+    public $limit = 10;
 
     public function __construct()
     {
@@ -28,13 +23,18 @@ class UserController extends Controller {
 
     public function getIndex()
     {
+
         $data = array();
 
         $user = new User();
 
-        $data['users'] = User::with('medias')->orderBy('created_at','DESC' )->where('role' , '=' , 'player')->paginate( $this->limit );
+        $data['title'] = 'Liste des utilisateurs';
+        $users = User::orderBy('created_at', 'DESC' );
+        $data['count'] = $user->count();
+        $data['items'] = $user->paginate( $this->limit );
+        //$data['users'] = User::with('medias')->orderBy('created_at','DESC' )->where('role' , '=' , 'player')->paginate( $this->limit );
 
-        return view('admin/users/liste')->with( $data );
+        return view('admin/users/list')->with( $data );
     }
 
     public function getDestroy( $id )
