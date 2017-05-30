@@ -13,8 +13,8 @@ class UserTableSeeder extends Seeder {
         $user = User::create(
             [
                 'id'        => '1',
-                'name'      => 'Renault',
-                'lastname'  => 'Renault',
+                'name'      => 'Dahmane',
+                'lastname'  => 'Aissi',
                 'tel'       => '0770000000',
                 'email'     => 'digital@allegorie.tv',
                 'willaya'   => 16,
