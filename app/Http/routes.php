@@ -16,20 +16,25 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::controller('admin',
+Route::group(['prefix' => 'backend'], function () {
+
+    Route::controller('users',
+        'UserController',
+        array(
+            'getIndex' => 'users.list'
+        )
+    );
+
+    Route::controller('/',
         'Admin\DashboardController',
         array(
             'getIndex' => 'dashbord.index'
         )
     );
-    Route::controller('users',
-        'UserController',
-        array(
-            'getIndex' => 'users.index'
-        )
-    );
+
 });
+
+
 
 
 

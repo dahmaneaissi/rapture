@@ -1,40 +1,45 @@
-@extends('frontend/layouts/master')
+<!DOCTYPE html>
+<html>
+<head>
+    <title>404</title>
 
-@section('content')
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
-<div class="bg2">
+    <style>
+        html, body {
+            height: 100%;
+        }
 
-    <div class="row intro">
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: table;
+            font-weight: 100;
+            font-family: 'Lato';
+        }
 
-        <div class="row profil">
-            <div class="col-xs-offset-6 col-xs-6">
+        .container {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
 
-            </div>
-        </div>
+        .content {
+            text-align: center;
+            display: inline-block;
+        }
 
-
-        <div class="row" style="margin-top: 50px">
-            <div class="col-xs-offset-1 col-xs-10">
-                <div class="alert alert-danger">
-                    <strong>404 - Not found.</strong>
-                </div>
-            </div>
-        </div>
-
+        .title {
+            font-size: 120px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="title">404 :(</div>
     </div>
-
-
-    <div class="form row">
-        <div class="col-xs-12">
-
-
-        </div>
-    </div>
-    <!-- /.row -->
 </div>
-@stop
-
-@section('footer')
-
-
-@stop
+</body>
+</html>

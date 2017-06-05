@@ -23,7 +23,6 @@ class UserController extends Controller {
 
     public function getIndex()
     {
-
         $data = array();
 
         $user = new User();
