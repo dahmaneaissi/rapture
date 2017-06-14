@@ -25,6 +25,21 @@ Route::group(['prefix' => 'backend'], function () {
         )
     );
 
+    Route::controller('entities',
+        'EntityController',
+        array(
+            'getIndex'      => 'entities.list',
+            'getCreate'     => 'entities.create',
+            'postSave'      => 'entities.save',
+            'getEdit'       => 'entities.edit',
+            'putUpdate'     => 'entities.update',
+            'getDestroy'    => 'entities.delete',
+            'getSearch'     => 'entities.search',
+        )
+    );
+
+    //Route::get('entities/edit/{id}', 'EntityController@getEdit');
+
     Route::controller('/',
         'Admin\DashboardController',
         array(

@@ -16,7 +16,8 @@
         <ul class="sidebar-menu">
             <li class="header">NAVIGATION</li>
             <li><a href="{{ route( 'dashbord.index' ) }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-            <li><a href="{{ route( 'users.list' ) }}"><i class="fa fa-dashboard"></i> <span>Users</span></a></li>
+            <li><a href="{{ route( 'entities.list' ) }}"><i class="fa fa-male"></i> <span>Entités</span></a></li>
+            <li><a href="{{ route( 'users.list' ) }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->
