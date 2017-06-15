@@ -41,9 +41,11 @@
                 </div>
 
             </div>
+
+            @if( $items->count() )
             <div class="box-body">
 
-                @if( $items->count() )
+
                 <table role="grid" class="table table-bordered table-striped dataTable">
                     <thead>
                     <tr>
@@ -84,13 +86,9 @@
                     </tbody>
                 </table>
 
-                @else
-                    <div class="alert alert-warning">
-                        Aucun resultat trouvé !
-                    </div>
-                @endif
             </div>
-            <!-- /.box-body -->
+
+
             <div class="box-footer">
                 <div class="row">
                     <div class="col-sm-5">
@@ -103,7 +101,12 @@
                     </div>
                 </div>
             </div>
-            <!-- /.box-footer-->
+                
+            @else
+                <div class="alert alert-warning">
+                    Aucun resultat trouvé !
+                </div>
+            @endif
         </div>
 
 
