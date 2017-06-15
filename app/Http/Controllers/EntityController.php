@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\Input;
 
 class EntityController extends Controller
 {
+
+    protected $limit = 10;
+
     /**
      * @return mixed
      */
     public function getIndex()
     {
         $data['title'] = 'Entities';
-        $data['items'] = Entity::orderBy( 'created_at', 'ASEC' )->paginate( 10 );
+        $data['items'] = Entity::orderBy( 'created_at', 'DESC' )->paginate( $this->limit );
         return view('admin.entities.list')->with( $data );
     }
 
@@ -124,17 +127,15 @@ class EntityController extends Controller
         );
     }
 
-    public function getSearch()
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function getSearch( Request $request )
     {
-        $q = Input::get('q');
+        $q = $request->input('q');
         $data['title'] = 'Recherche';
-        $data['items'] = Entity::where( 'firstname' ,'LIKE', '%'.$q.'%')
-            ->orWhere( 'lastname' ,'LIKE', '%'.$q.'%' )
-            ->orWhere( 'facebook' ,'LIKE', '%'.$q.'%' )
-            ->orWhere( 'twitter' ,'LIKE', '%'.$q.'%' )
-            ->orWhere( 'instagram' ,'LIKE', '%'.$q.'%' )
-            ->paginate(1);
-
+        $data['items'] = Entity::searchAll( $q )->paginate( $this->limit );
         return view('admin.entities.list')->with( $data );
     }
 
