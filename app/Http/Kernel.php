@@ -31,5 +31,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         //'auth.admin' => 'App\Http\Middleware\AdminAuthMiddleware',
         //'facebook.auth' => 'App\Http\Middleware\facebookAuth'
+        'permissions' => \App\Http\Middleware\CheckPermission::class
     ];
 }

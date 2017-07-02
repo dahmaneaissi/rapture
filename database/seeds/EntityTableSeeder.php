@@ -12,7 +12,7 @@ class EntityTableSeeder extends Seeder {
 
         $user = Entity::create(
             [
-                'firstname'      => 'Dahmane',
+                'firstname' => 'Dahmane',
                 'lastname'  => 'Aissi',
                 'facebook'  => 'facebook',
                 'twitter'   => 'twitter',
@@ -23,7 +23,7 @@ class EntityTableSeeder extends Seeder {
 
         $user = Entity::create(
             [
-                'firstname'      => 'John',
+                'firstname' => 'John',
                 'lastname'  => 'Doe',
                 'facebook'  => 'facebook',
                 'twitter'   => 'twitter',

@@ -5,7 +5,7 @@
 
     <section class="content-header">
         <h1>
-            {{ $title }}
+            @if( isset( $entity->id ) ) Modifier une entité @else Ajouter une entité @endif
         </h1>
     </section>
 
@@ -20,7 +20,7 @@
                             @include( 'admin/errors/errors' )
 
                             <?php
-                                if( $entity->id )
+                                if( isset( $entity->id ) )
                                 {
                                     $options = array(
                                             'method' => 'put',
@@ -33,10 +33,9 @@
                                     );
                                 }
 
-                                $options['files'] = 'true';
                             ?>
 
-                            {!!  Form::model( $entity , $options ) !!}
+                            {!!  Form::model( isset( $entity ) ? $entity : null, $options ) !!}
                                 <div class="box-body">
                                     <div class="form-group">
                                         {!! Form::label('lastname', 'Nom' ) !!}

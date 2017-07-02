@@ -9,12 +9,14 @@ class Entity extends Model
     protected $fillable = array(
         'name',
         'lastname',
+        'firstname',
         'facebook',
         'twitter',
         'instagram',
         'active'
     );
 
+    public static $limit = 10;
     /**
      * @param $query
      * @return mixed

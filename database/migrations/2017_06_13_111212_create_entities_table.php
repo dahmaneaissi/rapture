@@ -14,7 +14,7 @@ class CreateEntitiesTable extends Migration
     {
         Schema::create('entities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('');
+            $table->string('firstname');
             $table->string('lastname');
             $table->string('facebook');
             $table->string('twitter');

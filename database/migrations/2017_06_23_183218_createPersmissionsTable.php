@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMediaTable extends Migration
+class CreatePersmissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreateMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('medias', function(Blueprint $table)
+        Schema::create('permissions', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('file_name');
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('permission_description')->nullable();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateMediaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('medias');
+        Schema::drop('permissions');
     }
 }

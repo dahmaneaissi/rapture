@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder {
         $user = User::create(
             [
                 'id'        => '1',
-                'name'      => 'Dahmane',
+                'firstname' => 'Dahmane',
                 'lastname'  => 'Aissi',
                 'tel'       => '0770714662',
                 'email'     => 'aissi.dahmane@gmail.com',

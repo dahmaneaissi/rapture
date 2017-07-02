@@ -2,27 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Entity;
-
+use App\Dman\Contracts\EntityRepositoryInterface;
+use Illuminate\Http\Request;
 use App\Http\Requests\createEntityRequest;
 use App\Http\Requests\updateEntityRequest;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 class EntityController extends Controller
 {
 
-    protected $limit = 10;
+    /**
+     * @var $entity
+     */
+    protected $entity;
+
+    /**
+     * EntityController constructor.
+     * @param EntityRepositoryInterface $entity
+     */
+    public function __construct( EntityRepositoryInterface $entity )
+    {
+        $this->middleware('auth');
+        $this->middleware('permissions');
+        $this->entity = $entity;
+    }
 
     /**
      * @return mixed
      */
     public function getIndex()
     {
-        $data['title'] = 'Entities';
-        $data['items'] = Entity::orderBy( 'created_at', 'DESC' )->paginate( $this->limit );
+        $data['items'] = $this->entity->getAll();
         return view('admin.entities.list')->with( $data );
     }
 
@@ -31,26 +41,17 @@ class EntityController extends Controller
      */
     public function getCreate()
     {
-        $data['title'] = 'Nouvelle entité';
-        $data['entity'] = new Entity();
-
-        return view('admin.entities.form')->with( $data );
+        return view('admin.entities.form');
     }
+
 
     /**
      * @param createEntityRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function postSave( createEntityRequest $request )
+    public function postSave(createEntityRequest $request )
     {
-        $entity = new Entity();
-        $entity->firstname  = $request->firstname;
-        $entity->lastname   = $request->lastname;
-        $entity->facebook   = $request->facebook;
-        $entity->twitter    = $request->twitter;
-        $entity->instagram  = $request->instagram;
-        $entity->active     = $request->active;
-        $entity->save();
-
+        $this->entity->store( $request->all() );
         return redirect( route('entities.list'))->with(
             array(
                 'message' => 'l\'entité a bien été enregistrer.',
@@ -65,14 +66,7 @@ class EntityController extends Controller
      */
     public function getEdit( $id )
     {
-        $data['entity'] = Entity::find( $id );
-
-        if( is_null( $data['entity'] ) )
-        {
-            abort('404');
-        }
-
-        $data['title'] = 'Editer une entité';
+        $data['entity'] = $this->entity->findById( $id );
         return view('admin/entities/form')->with( $data );
     }
 
@@ -82,20 +76,7 @@ class EntityController extends Controller
      */
     public function putUpdate( $id , updateEntityRequest $request )
     {
-        $entity = Entity::find( $id );
-
-        if( is_null( $entity ) )
-        {
-            abort('404');
-        }
-
-        $entity->firstname  = $request->firstname;
-        $entity->lastname   = $request->lastname;
-        $entity->facebook   = $request->facebook;
-        $entity->twitter    = $request->twitter;
-        $entity->instagram  = $request->instagram;
-        $entity->active     = $request->active;
-        $entity->update();
+        $this->entity->update( $id ,  $request->all() );
 
         return redirect( route('entities.list'))->with(
             array(
@@ -111,14 +92,7 @@ class EntityController extends Controller
      */
     public function getDestroy( $id )
     {
-        $entity = Entity::find( $id );
-
-        if( is_null( $entity ) )
-        {
-            abort('404');
-        }
-
-        $entity->delete();
+        $this->entity->delete( $id );
         return redirect( route('entities.list'))->with(
             array(
                 'message' => 'L\'entité a bien été supprimer.',
@@ -134,8 +108,7 @@ class EntityController extends Controller
     public function getSearch( Request $request )
     {
         $q = $request->input('q');
-        $data['title'] = 'Recherche';
-        $data['items'] = Entity::searchAll( $q )->paginate( $this->limit );
+        $data['items'] = Entity::searchAll( $q )->paginate( Entity::$limit );
         return view('admin.entities.list')->with( $data );
     }
 

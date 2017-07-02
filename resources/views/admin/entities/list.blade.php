@@ -2,17 +2,13 @@
 
 @section('content')
 
-
-
-
     <section class="content-header">
         <h1>
-            {{ $title }}
+            Entities
         </h1>
     </section>
 
     <section class="content">
-
 
         @include('admin/flash/flash')
 

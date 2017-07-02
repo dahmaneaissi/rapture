@@ -25,20 +25,23 @@ Route::group(['prefix' => 'backend'], function () {
         )
     );
 
-    Route::controller('entities',
-        'EntityController',
-        array(
-            'getIndex'      => 'entities.list',
-            'getCreate'     => 'entities.create',
-            'postSave'      => 'entities.save',
-            'getEdit'       => 'entities.edit',
-            'putUpdate'     => 'entities.update',
-            'getDestroy'    => 'entities.delete',
-            'getSearch'     => 'entities.search',
-        )
-    );
+    /**
+     * Entities
+     */
+    Route::group(['prefix' => 'entities'], function () {
+        Route::get('/', [
+            'as' => 'entities.list' ,
+            'uses' => 'EntityController@getIndex' ,
+            'middleware' => 'permissions:sdsds,fdfd'
+        ]);
+        Route::get('create', [ 'as' => 'entities.create' , 'uses' => 'EntityController@getCreate']);
+        Route::post('save', [ 'as' => 'entities.save' , 'uses' => 'EntityController@postSave']);
+        Route::get('{id}/edit', [ 'as' => 'entities.edit' , 'uses' => 'EntityController@getEdit']);
+        Route::put('update/{id}', [ 'as' => 'entities.update' , 'uses' => 'EntityController@putUpdate']);
+        Route::get('destroy/{id}', [ 'as' => 'entities.delete' , 'uses' => 'EntityController@getDestroy']);
+        Route::get('search/{q}', [ 'as' => 'entities.search' , 'uses' => 'EntityController@getSearch']);
+    });
 
-    //Route::get('entities/edit/{id}', 'EntityController@getEdit');
 
     Route::controller('/',
         'Admin\DashboardController',
