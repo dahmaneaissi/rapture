@@ -15,62 +15,30 @@ class EntityRepository extends BaseRepository implements EntityRepositoryInterfa
     /**
      * @var Entity
      */
-    private $model;
+    protected $model;
 
 
     /**
      * EntityRepository constructor.
      * @param Entity $entity
      */
-    public function __construct(Entity $entity )
+    function __construct(Entity $entity )
     {
         $this->model = $entity;
     }
 
-
     /**
+     * @param $q
      * @return mixed
      */
-    public function getAll()
+    public function search( $q )
     {
-        return $this->model->orderBy( 'created_at', 'DESC' )->paginate( 10 );
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function findById( $id )
-    {
-        return $this->model->findOrFail( $id );
-    }
-
-    /**
-     * @param array $data
-     * @return static
-     */
-    public function store(array $data )
-    {
-        return $this->model->create( $data );
-    }
-
-    /**
-     * @param $id
-     * @param array $data
-     * @return mixed
-     */
-    public function update( $id , array $data )
-    {
-        return $this->model->findOrFail( $id )->update( $data );
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function delete( $id )
-    {
-        return $this->model->findOrFail( $id )->delete();
+        return $query->where( 'firstname' ,'LIKE', '%'.$q.'%')
+            ->orWhere( 'lastname' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'facebook' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'twitter' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'instagram' ,'LIKE', '%'.$q.'%' )
+            ->orderBy( 'created_at', 'DESC' )->paginate( 10 );
     }
 
 }

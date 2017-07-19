@@ -6,6 +6,7 @@ use App\Dman\Contracts\EntityRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\createEntityRequest;
 use App\Http\Requests\updateEntityRequest;
+use Illuminate\View\View;
 
 
 class EntityController extends Controller
@@ -14,17 +15,18 @@ class EntityController extends Controller
     /**
      * @var $entity
      */
-    protected $entity;
+    protected $repo;
 
     /**
      * EntityController constructor.
      * @param EntityRepositoryInterface $entity
      */
-    public function __construct( EntityRepositoryInterface $entity )
+    public function __construct( EntityRepositoryInterface $repo )
     {
         $this->middleware('auth');
         $this->middleware('permissions');
-        $this->entity = $entity;
+
+        $this->repo = $repo;
     }
 
     /**
@@ -32,7 +34,7 @@ class EntityController extends Controller
      */
     public function getIndex()
     {
-        $data['items'] = $this->entity->getAll();
+        $data['items'] = $this->repo->getAll();
         return view('admin.entities.list')->with( $data );
     }
 
@@ -51,11 +53,11 @@ class EntityController extends Controller
      */
     public function postSave(createEntityRequest $request )
     {
-        $this->entity->store( $request->all() );
+        $this->repo->store( $request->all() );
         return redirect( route('entities.list'))->with(
             array(
-                'message' => 'l\'entité a bien été enregistrer.',
-                'class' => 'success'
+                'message'   => 'l\'entité a bien été enregistrer.',
+                'class'     => 'success'
             )
         );
     }
@@ -66,7 +68,7 @@ class EntityController extends Controller
      */
     public function getEdit( $id )
     {
-        $data['entity'] = $this->entity->findById( $id );
+        $data['entity'] = $this->repo->findById( $id );
         return view('admin/entities/form')->with( $data );
     }
 
@@ -76,7 +78,7 @@ class EntityController extends Controller
      */
     public function putUpdate( $id , updateEntityRequest $request )
     {
-        $this->entity->update( $id ,  $request->all() );
+        $this->repo->update( $id ,  $request->all() );
 
         return redirect( route('entities.list'))->with(
             array(
@@ -92,7 +94,7 @@ class EntityController extends Controller
      */
     public function getDestroy( $id )
     {
-        $this->entity->delete( $id );
+        $this->repo->delete( $id );
         return redirect( route('entities.list'))->with(
             array(
                 'message' => 'L\'entité a bien été supprimer.',
@@ -103,14 +105,13 @@ class EntityController extends Controller
 
     /**
      * @param Request $request
-     * @return mixed
+     * @return View
      */
     public function getSearch( Request $request )
     {
         $q = $request->input('q');
-        $data['items'] = Entity::searchAll( $q )->paginate( Entity::$limit );
+        $data['items'] = $this->repo->search( $q );
         return view('admin.entities.list')->with( $data );
     }
-
 
 }

@@ -4,7 +4,7 @@
 
     <section class="content-header">
         <h1>
-            Entities
+            {{ trans('entities.backend.success.list-title') }}
         </h1>
     </section>
 
@@ -38,7 +38,7 @@
 
             </div>
 
-            @if( $items->count() )
+            @if( count( $items ) )
             <div class="box-body">
 
 
