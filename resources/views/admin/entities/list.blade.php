@@ -6,6 +6,7 @@
         <h1>
             {{ trans('entities.backend.success.list-title') }}
         </h1>
+
     </section>
 
     <section class="content">
@@ -45,11 +46,12 @@
                 <table role="grid" class="table table-bordered table-striped dataTable">
                     <thead>
                     <tr>
-                        <th>Nom & Prénom</th>
-                        <th>Compte Facebook</th>
-                        <th>Compte Twitter</th>
-                        <th>Compte Instagram</th>
-                        <th>Statut</th>
+                        <th>{!! sort_by('firstname' , 'Prénom' )  !!}</th>
+                        <th>{!! sort_by('lastname' , 'Nom' )  !!}</th>
+                        <th>{!! sort_by('facebook' , 'Facebook' )  !!}</th>
+                        <th>{!! sort_by('twitter' , 'Twitter' )  !!}</th>
+                        <th>{!! sort_by('instagram' , 'Instagram' )  !!}</th>
+                        <th>{!! sort_by('active' , 'Statut' )  !!}</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -58,7 +60,8 @@
                     @foreach ( $items as $item )
 
                         <tr>
-                            <td>{{ $item->name }} {{ $item->lastname }}</td>
+                            <td>{{ $item->lastname }}</td>
+                            <td>{{ $item->firstname }} </td>
                             <td>{{ $item->facebook }}</td>
                             <td>{{ $item->twitter }}</td>
                             <td>{{ $item->instagram }}</td>
@@ -88,7 +91,7 @@
             <div class="box-footer">
                 <div class="row">
                     <div class="col-sm-5">
-
+                        {{ trans('global.backend.total') }} {{ $items->total() }}
                     </div>
                     <div class="col-sm-7">
                         <div class="pull-right">

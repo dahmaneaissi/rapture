@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Dman\Repositories\EntityRepository;
-use App\Dman\Contracts\EntityRepositoryInterface;
+use Dman\Repositories\EntityRepository;
+use Dman\Contracts\EntityRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {

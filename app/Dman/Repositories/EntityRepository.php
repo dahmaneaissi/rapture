@@ -1,8 +1,8 @@
 <?php
-namespace App\Dman\Repositories;
+namespace Dman\Repositories;
 
-use App\Dman\Contracts\CrudableInterface;
-use App\Dman\Contracts\EntityRepositoryInterface;
+use Dman\Contracts\CrudableInterface;
+use Dman\Contracts\EntityRepositoryInterface;
 
 use App\Models\Entity;
 
@@ -33,7 +33,7 @@ class EntityRepository extends BaseRepository implements EntityRepositoryInterfa
      */
     public function search( $q )
     {
-        return $query->where( 'firstname' ,'LIKE', '%'.$q.'%')
+        return $this->model->where( 'firstname' ,'LIKE', '%'.$q.'%')
             ->orWhere( 'lastname' ,'LIKE', '%'.$q.'%' )
             ->orWhere( 'facebook' ,'LIKE', '%'.$q.'%' )
             ->orWhere( 'twitter' ,'LIKE', '%'.$q.'%' )

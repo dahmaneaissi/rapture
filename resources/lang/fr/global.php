@@ -3,16 +3,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Antity Language Lines
+    | Global Language Lines
     |--------------------------------------------------------------------------
     |
-    | The following language lines contain strings associated to the
-    | system adding lines to the Antity table.
+    | The following language lines contain global strings
     |
     */
+
     'backend' => [
-        'success' => [
-            'list-title' => 'Entities',
-        ]elequant
+        'total' => 'Total',
     ],
 ];

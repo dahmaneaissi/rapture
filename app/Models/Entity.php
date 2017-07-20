@@ -16,7 +16,16 @@ class Entity extends Model
         'active'
     );
 
-    public static $limit = 10;
+    protected $datatableColumn = [
+        'name',
+        'lastname',
+        'firstname',
+        'facebook',
+        'twitter',
+        'instagram',
+        'active'
+    ];
+
     /**
      * @param $query
      * @return mixed
@@ -24,6 +33,33 @@ class Entity extends Model
     public function scopeActived( $query )
     {
         return $query->where('active', '=' , 1 );
+    }
+
+
+    /**
+     * Ordonner par colonne personnalisé
+     *
+     * @param $query
+     * @param array $params
+     * @return mixed
+     */
+    public function scopeCustomOrder($query , array  $params )
+    {
+        if( in_array( $params['sortBy']  , $this->datatableColumn ) )
+        {
+            return $query->orderBy( $params['sortBy'] , $params['direction'] );
+        }
+    }
+
+    /**
+     * Ordonner par défaut
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeDefaultOrder($query )
+    {
+        return $query->orderBy( 'created_at' , 'desc' );
     }
 
 }

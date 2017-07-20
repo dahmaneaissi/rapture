@@ -33,7 +33,7 @@
                         <th>Date de naissance</th>
                         <th>Age an(s)</th>
                         <th>E-Mail</th>
-                        <th>Téléphone</th>
+                        <th><th>{!! sort_by('telephone' , 'Téléphone' )  !!} </th></th>
                         <th>Willaya</th>
                         <th>Date & Heure</th>
                         <th>Profil Facebook</th>

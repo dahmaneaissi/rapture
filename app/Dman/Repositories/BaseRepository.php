@@ -1,6 +1,8 @@
 <?php
 
-namespace  App\Dman\Repositories;
+namespace Dman\Repositories;
+
+use App\Models\Entity;
 
 abstract class BaseRepository {
 
@@ -14,9 +16,16 @@ abstract class BaseRepository {
     /**
      * @return mixed
      */
-    public function getAll()
+    public function getAll( array $params )
     {
-        return $this->model->orderBy( 'created_at', 'DESC' )->paginate( 10 );
+        if( $this->isSortable( $params ) )
+        {
+            $query = $this->model->customOrder( $params );
+        }else{
+            $query = $this->model->defaultOrder();
+        }
+
+        return $query->paginate( 10 );
     }
 
     /**
@@ -55,4 +64,14 @@ abstract class BaseRepository {
     {
         return $this->model->findOrFail( $id )->delete();
     }
+
+    /**
+     * @param array $params
+     * @return bool
+     */
+    protected function isSortable(array $params)
+    {
+        return $params['sortBy'] && $params['direction'];
+    }
+
 }

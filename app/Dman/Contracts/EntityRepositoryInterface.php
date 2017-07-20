@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Dman\Contracts;
+namespace Dman\Contracts;
 
 interface EntityRepositoryInterface {
     /**
      * @return mixed
      */
-    public function getAll();
+    public function getAll( array $params );
 }

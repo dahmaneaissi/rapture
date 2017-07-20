@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dman\Contracts;
+namespace Dman\Contracts;
 
 /**
  * Interface Crudable

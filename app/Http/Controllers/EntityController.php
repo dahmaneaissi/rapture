@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Dman\Contracts\EntityRepositoryInterface;
-use Illuminate\Http\Request;
+use Request;
+use Dman\Contracts\EntityRepositoryInterface;
+
 use App\Http\Requests\createEntityRequest;
 use App\Http\Requests\updateEntityRequest;
 use Illuminate\View\View;
@@ -34,7 +35,9 @@ class EntityController extends Controller
      */
     public function getIndex()
     {
-        $data['items'] = $this->repo->getAll();
+        $sortBy     = Request::input('sortBy');
+        $direction  = Request::input('direction');
+        $data['items'] = $this->repo->getAll( compact( 'sortBy' , 'direction' ) );
         return view('admin.entities.list')->with( $data );
     }
 
@@ -107,9 +110,9 @@ class EntityController extends Controller
      * @param Request $request
      * @return View
      */
-    public function getSearch( Request $request )
+    public function getSearch()
     {
-        $q = $request->input('q');
+        $q = Request::input('q');
         $data['items'] = $this->repo->search( $q );
         return view('admin.entities.list')->with( $data );
     }
