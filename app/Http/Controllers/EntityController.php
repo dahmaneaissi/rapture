@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Dman\Traits\SorttabeleTrait;
+
 use Dman\Contracts\EntityRepositoryInterface;
 
 use App\Http\Requests\createEntityRequest;
 use App\Http\Requests\updateEntityRequest;
 use Illuminate\View\View;
 
+use Illuminate\Http\Request;
+
 
 class EntityController extends Controller
 {
+    use SorttabeleTRait;
 
     /**
      * @var $entity
@@ -22,12 +26,13 @@ class EntityController extends Controller
      * EntityController constructor.
      * @param EntityRepositoryInterface $entity
      */
-    public function __construct( EntityRepositoryInterface $repo )
+    public function __construct( EntityRepositoryInterface $repo , Request $request )
     {
         $this->middleware('auth');
         $this->middleware('permissions');
 
-        $this->repo = $repo;
+        $this->repo     = $repo;
+        $this->request  = $request;
     }
 
     /**
@@ -35,9 +40,8 @@ class EntityController extends Controller
      */
     public function getIndex()
     {
-        $sortBy     = Request::input('sortBy');
-        $direction  = Request::input('direction');
-        $data['items'] = $this->repo->getAll( compact( 'sortBy' , 'direction' ) );
+        $params         = $this->getSortRequestParams( $this->request );
+        $data['items']  = $this->repo->getAll( $params );
         return view('admin.entities.list')->with( $data );
     }
 
@@ -112,7 +116,7 @@ class EntityController extends Controller
      */
     public function getSearch()
     {
-        $q = Request::input('q');
+        $q = $this->request->get('q');
         $data['items'] = $this->repo->search( $q );
         return view('admin.entities.list')->with( $data );
     }

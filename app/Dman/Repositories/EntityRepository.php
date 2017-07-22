@@ -1,10 +1,10 @@
 <?php
 namespace Dman\Repositories;
-
 use Dman\Contracts\CrudableInterface;
 use Dman\Contracts\EntityRepositoryInterface;
 
 use App\Models\Entity;
+
 
 /**
  * Class EntityRepository

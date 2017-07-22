@@ -2,23 +2,26 @@
 
 namespace Dman\Traits;
 
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
 
-trait SorttabeleTRait{
+trait SorttabeleTrait{
 
     protected $orderBy;
 
     protected $sort;
 
-    function __construct( Request $request )
+    protected function getParams( Request $request )
     {
-        $this->orderBy  = $request->get('prderBy');
-        $this->sort     = $request->get('direction');
+        $this->orderBy  = $request->get('sortBy');
+        $this->sort     = $request->get('sort');
     }
 
-    protected function getSortRequestParams()
+    protected function getSortRequestParams( Request $request )
     {
-        dd($this->orderBy);
+        $this->getParams( $request );
+        $sortBy = $this->orderBy;
+        $sort   = $this->sort;
+        return compact( 'sortBy' , 'sort');
     }
 
 }

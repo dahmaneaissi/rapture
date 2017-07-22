@@ -47,7 +47,7 @@ class Entity extends Model
     {
         if( in_array( $params['sortBy']  , $this->datatableColumn ) )
         {
-            return $query->orderBy( $params['sortBy'] , $params['direction'] );
+            return $query->orderBy( $params['sortBy'] , $params['sort'] );
         }
     }
 

@@ -39,7 +39,7 @@ Route::group(['prefix' => 'backend'], function () {
         Route::get('{id}/edit', [ 'as' => 'entities.edit' , 'uses' => 'EntityController@getEdit']);
         Route::put('update/{id}', [ 'as' => 'entities.update' , 'uses' => 'EntityController@putUpdate']);
         Route::get('destroy/{id}', [ 'as' => 'entities.delete' , 'uses' => 'EntityController@getDestroy']);
-        Route::get('search/{q}', [ 'as' => 'entities.search' , 'uses' => 'EntityController@getSearch']);
+        Route::get('search', [ 'as' => 'entities.search' , 'uses' => 'EntityController@getSearch']);
     });
 
 

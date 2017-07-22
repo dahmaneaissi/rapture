@@ -2,8 +2,6 @@
 
 namespace Dman\Repositories;
 
-use App\Models\Entity;
-
 abstract class BaseRepository {
 
     protected $model;
@@ -71,7 +69,7 @@ abstract class BaseRepository {
      */
     protected function isSortable(array $params)
     {
-        return $params['sortBy'] && $params['direction'];
+        return $params['sortBy'] && $params['sort'];
     }
 
 }
