@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Models\Access\Role;
+use App\Models\Access\Permission;
+
+class AccesseSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('roles')->delete();
+
+        // Je crée le role
+        $role = Role::create(
+            [
+                'id'            => 1,
+                'title'         => 'Administrateur',
+                'slug'          => 'Administrator',
+                'description'   => 'Chikour houma khalia',
+            ]
+        );
+
+        // J'attache le role au user
+        $role->users()->attach(1);
+
+        // Je crée une permission
+        $permission = Permission::create(
+            [
+                'id'            => 1,
+                'title'         => 'Show dashbord',
+                'slug'          => 'show-dashbord',
+                'description'   => 'Show dashbord description',
+            ]
+        );
+
+        // J'attache la permission au role
+        $permission->roles(1)->attach(1);
+    }
+
+}
