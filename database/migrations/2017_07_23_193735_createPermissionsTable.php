@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissionsRolesTable extends Migration
+class CreatePermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreatePermissionsRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('permission_role', function(Blueprint $table)
+        Schema::create('permissions', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('permission_id');
-            $table->integer('role_id');
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('description')->nullable();
         });
     }
 
@@ -27,6 +28,6 @@ class CreatePermissionsRolesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('permission_role');
+        Schema::drop('permissions');
     }
 }
