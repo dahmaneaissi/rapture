@@ -2,10 +2,28 @@
 
 namespace App\Models\Access;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Role
+ * @package App\Models\Access
+ */
 class Role extends Model
 {
+    /**
+     * @var string
+     */
+    protected $table = 'roles';
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'title',
+        'slug',
+        'description'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -21,6 +39,6 @@ class Role extends Model
      */
     public function permissions()
     {
-        return $this->belongsToMany('App\Permission');
+        return $this->belongsToMany( Permission::class );
     }
 }
