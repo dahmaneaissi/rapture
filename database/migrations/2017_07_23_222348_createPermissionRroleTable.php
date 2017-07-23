@@ -12,7 +12,7 @@ class CreatePermissionRroleTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_permission', function(Blueprint $table)
+        Schema::create('permission_role', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('role_id');
@@ -27,6 +27,6 @@ class CreatePermissionRroleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('role_permission');
+        Schema::drop('permission_role');
     }
 }
