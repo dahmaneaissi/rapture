@@ -2,7 +2,6 @@
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Config;
 
 class AdminAuthMiddleware {
 

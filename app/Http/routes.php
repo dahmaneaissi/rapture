@@ -43,12 +43,7 @@ Route::group(['prefix' => 'backend'], function () {
     });
 
 
-    Route::controller('/',
-        'Admin\DashboardController',
-        array(
-            'getIndex' => 'dashbord.index'
-        )
-    );
+    Route::get('/', [ 'as' => 'dashbord.index' , 'uses' => 'Admin\DashboardController@getIndex', 'middleware' => 'acl:show-dashbord' ]);
 
 });
 
