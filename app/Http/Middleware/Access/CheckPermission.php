@@ -24,6 +24,6 @@ class CheckPermission
             }
         }
 
-        return $request->ajax ? response('Unauthorized.', 401) : redirect('/backend');
+        return $request->ajax ? response('Unauthorized.', 401) : abort('403');
     }
 }

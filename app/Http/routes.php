@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::group(['prefix' => 'backend'], function () {
+/**
+ * BackEnd Routes Group
+ */
+Route::group(['prefix' => 'backend' , 'middleware' => 'auth'], function () {
 
     Route::controller('users',
         'UserController',
@@ -61,7 +63,7 @@ Route::group(['prefix' => 'backend'], function () {
     /**
      * Dashbord
      */
-    Route::get('/', [ 'as' => 'dashbord.index' , 'uses' => 'Admin\DashboardController@getIndex', 'middleware' => 'acl:show-dashbord' ]);
+    Route::get('/', [ 'as' => 'dashbord.index' , 'uses' => 'Admin\DashboardController@getIndex', 'middleware' => 'acl:show-a' ]);
 
 });
 

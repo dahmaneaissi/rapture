@@ -28,8 +28,8 @@ class EntityController extends Controller
      */
     public function __construct( EntityRepositoryInterface $repo , Request $request )
     {
-        $this->middleware('auth');
-        $this->middleware('permissions');
+
+
 
         $this->repo     = $repo;
         $this->request  = $request;
