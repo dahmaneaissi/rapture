@@ -69,7 +69,7 @@ abstract class BaseRepository {
      */
     protected function isSortable(array $params)
     {
-        return $params['sortBy'] && $params['sort'];
+        return isset( $params['sortBy'] ) && isset( $params['sort'] ) && $params['sortBy'] && $params['sort'];
     }
 
 }

@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use Dman\Repositories\EntityRepository;
 use Dman\Contracts\EntityRepositoryInterface;
 
+use Dman\Repositories\Access\RoleRepositoryInterface;
+use Dman\Repositories\Access\RoleRepository;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +31,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             EntityRepositoryInterface::class,
             EntityRepository::class
+        );
+
+        $this->app->bind(
+            RoleRepositoryInterface::class,
+            RoleRepository::class
         );
     }
 }

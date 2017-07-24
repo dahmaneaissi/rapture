@@ -53,7 +53,7 @@ class AccesseSeeder extends Seeder {
                 'id'            => 2,
                 'title'         => 'Edit Entity',
                 'slug'          => 'edit-entity',
-                'description'   => 'Editer ',
+                'description'   => 'Editer',
             ]
         );
 

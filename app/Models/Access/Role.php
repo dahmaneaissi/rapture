@@ -3,13 +3,14 @@
 namespace App\Models\Access;
 
 use App\User;
-use Illuminate\Database\Eloquent\Model;
+use Dman\Models\BaseModel;
+
 
 /**
  * Class Role
  * @package App\Models\Access
  */
-class Role extends Model
+class Role extends BaseModel
 {
     /**
      * @var string
