@@ -1,8 +1,7 @@
 <?php
 
 namespace App;
-use App\Models\Access\Role;
-
+use Dman\Models\Access\Role;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

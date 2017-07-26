@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Access;
+namespace Dman\Models\Access;
 
 use App\User;
 use Dman\Models\BaseModel;

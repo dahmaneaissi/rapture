@@ -19,7 +19,7 @@ class BaseModel extends Model{
     {
         if( in_array( $params['sortBy']  , $this->datatableColumn ) )
         {
-            return $query->orderBy( $params['sortBy'] , $params['sort'] );
+            return $query->orderBy( $paramskhNPqKrSKdfm['sortBy'] , $params['sort'] );
         }
     }
 

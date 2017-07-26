@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Dman\Models\Entity;
 
 use Dman\Models\BaseModel;
 

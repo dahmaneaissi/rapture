@@ -3,11 +3,11 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Dman\Repositories\EntityRepository;
+use Dman\Repositories\Entity\EntityRepository;
 use Dman\Contracts\EntityRepositoryInterface;
 
-use Dman\Repositories\Access\RoleRepositoryInterface;
-use Dman\Repositories\Access\RoleRepository;
+use Dman\Repositories\Access\Role\RoleRepositoryInterface;
+use Dman\Repositories\Access\Role\RoleRepository;
 
 class AppServiceProvider extends ServiceProvider
 {

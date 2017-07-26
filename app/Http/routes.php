@@ -63,7 +63,7 @@ Route::group(['prefix' => 'backend' , 'middleware' => 'auth'], function () {
     /**
      * Dashbord
      */
-    Route::get('/', [ 'as' => 'dashbord.index' , 'uses' => 'Admin\DashboardController@getIndex', 'middleware' => 'acl:show-a' ]);
+    Route::get('/', [ 'as' => 'dashbord.index' , 'uses' => 'Admin\DashboardController@getIndex', 'middleware' => 'acl:show-dashbord' ]);
 
 });
 

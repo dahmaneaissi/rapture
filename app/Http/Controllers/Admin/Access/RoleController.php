@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Access;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use Dman\Repositories\Access\RoleRepositoryInterface;
+use Dman\Repositories\Access\Role\RoleRepositoryInterface;
 
 class RoleController extends Controller
 {
