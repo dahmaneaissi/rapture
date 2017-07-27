@@ -9,6 +9,8 @@ use Dman\Contracts\EntityRepositoryInterface;
 use Dman\Repositories\Access\Role\RoleRepositoryInterface;
 use Dman\Repositories\Access\Role\RoleRepository;
 
+use App\Http\ViewComposers\Backend\MenuComposer;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -18,7 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(
+            '*', MenuComposer::class
+        );
+
     }
 
     /**

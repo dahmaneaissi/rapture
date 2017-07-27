@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+View::composer('admin.global.main-sidebar',function($view){
+    $dzair = request()->route()->getName();
+    $view->with(compact('dzair'));
+});
+
 /**
  * BackEnd Routes Group
  */

@@ -2,6 +2,10 @@
 
 namespace Dman\Repositories;
 
+/**
+ * Class BaseRepository
+ * @package Dman\Repositories
+ */
 abstract class BaseRepository {
 
     protected $model;
@@ -12,9 +16,10 @@ abstract class BaseRepository {
     }
 
     /**
+     * @param array $params
      * @return mixed
      */
-    public function getAll( array $params )
+    public function getAll(array $params = [] )
     {
         if( $this->isSortable( $params ) )
         {
