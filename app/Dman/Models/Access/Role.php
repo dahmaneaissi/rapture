@@ -17,6 +17,11 @@ class Role extends BaseModel
      */
     protected $table = 'roles';
 
+    protected $datatableColumn = [
+        'title',
+        'description'
+    ];
+
     /**
      * @var array
      */
