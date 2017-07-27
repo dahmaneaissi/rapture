@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Access\Role;
-use App\Models\Access\Permission;
+use Dman\Models\Access\Role;
+use Dman\Models\Access\Permission;
 
 class AccesseSeeder extends Seeder {
 
@@ -39,7 +39,7 @@ class AccesseSeeder extends Seeder {
             [
                 'id'            => 1,
                 'title'         => 'Show dashbord',
-                'slug'          => 'show-dashbord',
+                'slug'          => 'dashbord-index',
                 'description'   => 'Show dashbord description',
             ]
         );

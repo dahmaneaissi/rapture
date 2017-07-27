@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Entity;
+use Dman\Models\Entity\Entity;
 
 class EntityTableSeeder extends Seeder {
 
