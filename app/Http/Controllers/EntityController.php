@@ -63,7 +63,7 @@ class EntityController extends Controller
         $this->repo->store( $request->all() );
         return redirect( route('entities.list'))->with(
             array(
-                'message'   => 'l\'entité a bien été enregistrer.',
+                'message' => trans('entities.backend.success.save'),
                 'class'     => 'success'
             )
         );
@@ -89,7 +89,7 @@ class EntityController extends Controller
 
         return redirect( route('entities.list'))->with(
             array(
-                'message' => 'L\'entité a bien été Mit à jour.',
+                'message' => trans('entities.backend.success.update'),
                 'class' => 'success'
             )
         );
@@ -104,7 +104,7 @@ class EntityController extends Controller
         $this->repo->delete( $id );
         return redirect( route('entities.list'))->with(
             array(
-                'message' => 'L\'entité a bien été supprimer.',
+                'message' => trans('entities.backend.success.delete'),
                 'class' => 'success'
             )
         );

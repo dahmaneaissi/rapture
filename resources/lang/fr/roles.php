@@ -3,7 +3,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Antity Language Lines
+    | Roles Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines contain strings associated to the
@@ -12,11 +12,11 @@ return [
     */
 
     'backend' => [
-        'list-title' => 'Entités',
+        'list-title' => 'Roles',
         'success' => [
-            'save'          => 'L\'entité a bien été enregistrée',
-            'update'        => 'L\'entité a bien été mis à jour',
-            'delete'        => 'L\'entité a bien été supprimé',
-        ]
+            'save'      => 'Le role a bien été enregistrer',
+            'update'    => 'Le role a bien été mis a jour',
+            'delete'    => 'Le role a bien été supprimer',
+        ],
     ],
 ];

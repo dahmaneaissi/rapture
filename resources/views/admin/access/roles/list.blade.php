@@ -4,7 +4,7 @@
 
     <section class="content-header">
         <h1>
-            {{ trans('entities.backend.success.list-title') }}
+            {{ trans('roles.backend.list-title') }}
         </h1>
 
     </section>
@@ -47,6 +47,7 @@
                         <thead>
                         <tr>
                             <th>{!! sort_by('title' , 'Titre' )  !!}</th>
+                            <th>{!! sort_by('slug' , 'Slug' )  !!}</th>
                             <th>{!! sort_by('description' , 'Description' )  !!}</th>
                             <th>Actions</th>
                         </tr>
@@ -57,10 +58,9 @@
 
                             <tr>
                                 <td>{{ $item->title }}</td>
+                                <td>{{ $item->slug }}</td>
                                 <td>{{ $item->description }} </td>
-                                <td>
-                                    <i style="color: @if( $item->active ) #008d4c @else #dd4b39 @endif" class="fa fa-eye"></i>
-                                </td>
+
                                 <td>
                                     <a href="{{ route('roles.edit' , array( $item ) ) }}" class="btn btn-xs btn-info">
                                         <i class="fa fa-edit"></i>

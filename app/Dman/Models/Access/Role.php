@@ -47,4 +47,15 @@ class Role extends BaseModel
     {
         return $this->belongsToMany( Permission::class );
     }
+
+    /**
+     * Set Slug Attribute.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function setSlugAttribute($value)
+    {
+        return $this->attributes['slug'] = str_slug( $value );
+    }
 }

@@ -4,7 +4,7 @@
 
     <section class="content-header">
         <h1>
-            {{ trans('entities.backend.success.list-title') }}
+            {{ trans('entities.backend.list-title') }}
         </h1>
 
     </section>
