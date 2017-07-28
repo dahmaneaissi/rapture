@@ -52,7 +52,7 @@ class RoleController extends Controller
     public function postSave(createRoleRequest $request )
     {
         $this->repository->store( $request->all() );
-        return redirect( route('roles.list'))->with(
+        return redirect( route('roles.index'))->with(
             [
                 'message'   => trans('roles.backend.success.save'),
                 'class'     => 'success'
@@ -78,7 +78,7 @@ class RoleController extends Controller
     {
         $this->repository->update( $id ,  $request->all() );
 
-        return redirect( route('roles.list'))->with(
+        return redirect( route('roles.index'))->with(
             array(
                 'message'   => trans('roles.backend.success.update'),
                 'class'     => 'success'
@@ -93,7 +93,7 @@ class RoleController extends Controller
     public function getDestroy( $id )
     {
         $this->repository->delete( $id );
-        return redirect( route('roles.list'))->with(
+        return redirect( route('roles.index'))->with(
             array(
                 'message'   => trans('roles.backend.success.delete'),
                 'class'     => 'success'

@@ -19,6 +19,7 @@ class Role extends BaseModel
 
     protected $datatableColumn = [
         'title',
+        'slug',
         'description'
     ];
 

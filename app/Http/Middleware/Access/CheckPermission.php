@@ -13,13 +13,13 @@ class CheckPermission
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $permission = null )
+    public function handle($request, Closure $next )
     {
 
-        if ( !app('Illuminate\Contracts\Auth\Guard')->guest() )
-        {
-            if ($request->user()->hasPermission($permission))
-            {
+        $permission = $request->route()->getName();
+
+        if (!app('Illuminate\Contracts\Auth\Guard')->guest()) {
+            if ($request->user()->hasPermission($permission)) {
                 return $next($request);
             }
         }

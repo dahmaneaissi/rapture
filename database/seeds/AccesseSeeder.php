@@ -34,31 +34,57 @@ class AccesseSeeder extends Seeder {
         // J'attache le role au user
         $role->users()->attach(1);
 
-        // Je crée une permission
-        $permission = Permission::create(
+        $permissions = [
             [
                 'id'            => 1,
                 'title'         => 'Show dashbord',
-                'slug'          => 'dashbord-index',
+                'slug'          => 'dashbord.index',
                 'description'   => 'Show dashbord description',
-            ]
-        );
-
-        // J'attache la permission au role
-        $permission->roles()->attach(1);
-
-        // Je crée une permission
-        $permission = Permission::create(
+            ],
             [
                 'id'            => 2,
-                'title'         => 'Edit Entity',
-                'slug'          => 'edit-entity',
-                'description'   => 'Editer',
-            ]
-        );
+                'title'         => 'Show roles',
+                'slug'          => 'roles.index',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 3,
+                'title'         => 'Edit roles',
+                'slug'          => 'roles.edit',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 4,
+                'title'         => 'Create roles',
+                'slug'          => 'roles.create',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 5,
+                'title'         => 'Save roles',
+                'slug'          => 'roles.save',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 6,
+                'title'         => 'Update roles',
+                'slug'          => 'roles.update',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 7,
+                'title'         => 'Delete roles',
+                'slug'          => 'roles.delete',
+                'description'   => 'description',
+            ],
+        ];
 
-        // J'attache la permission au role
-        $permission->roles()->attach(2);
+        foreach ( $permissions as $permission )
+        {
+            $permission = Permission::create( $permission );
+            $permission->roles()->attach(1);
+        }
+
     }
 
 }

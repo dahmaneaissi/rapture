@@ -15,32 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-View::composer('admin.global.main-sidebar',function($view){
-    $dzair = request()->route()->getName();
-    $view->with(compact('dzair'));
-});
-
 /**
  * BackEnd Routes Group
  */
-Route::group(['prefix' => 'backend' , 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'backend' , 'middleware' => ['auth','acl']], function () {
 
-    Route::controller('users',
-        'UserController',
-        array(
-            'getIndex' => 'users.list'
-        )
-    );
+    Route::controller('users', 'UserController', [ 'getIndex' => 'users.list' ] );
 
     /**
      * Entities
      */
     Route::group(['prefix' => 'entities'], function () {
-        Route::get('/', [
-            'as' => 'entities.list' ,
-            'uses' => 'EntityController@getIndex' ,
-            'middleware' => 'permissions:sdsds,fdfd'
-        ]);
+        Route::get('/', ['as' => 'entities.index' , 'uses' => 'EntityController@getIndex']);
         Route::get('create', [ 'as' => 'entities.create' , 'uses' => 'EntityController@getCreate']);
         Route::post('save', [ 'as' => 'entities.save' , 'uses' => 'EntityController@postSave']);
         Route::get('{id}/edit', [ 'as' => 'entities.edit' , 'uses' => 'EntityController@getEdit']);
@@ -54,7 +40,7 @@ Route::group(['prefix' => 'backend' , 'middleware' => 'auth'], function () {
      */
     Route::group(['prefix' => 'roles'], function () {
         Route::get('/', [
-            'as' => 'roles.list' ,
+            'as' => 'roles.index' ,
             'uses' => 'Admin\Access\RoleController@getIndex'
         ]);
         Route::get('create', [ 'as' => 'roles.create' , 'uses' => 'Admin\Access\RoleController@getCreate']);

@@ -20,7 +20,7 @@ class Menu extends BaseModel
         ],
         [
             'title'     => 'Entités',
-            'routeName' => 'entities.list',
+            'routeName' => 'entities.index',
             'icon'      => 'fa fa-male',
         ],
         [
@@ -30,7 +30,7 @@ class Menu extends BaseModel
         ],
         [
             'title'     => 'Roles',
-            'routeName' => 'roles.list',
+            'routeName' => 'roles.index',
             'icon'      => 'fa fa-graduation-cap',
         ],
     ];
