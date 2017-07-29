@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Dman\Repositories\Access\Permissions\PermissionRepository;
+use Dman\Repositories\Access\Permissions\PermissionRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use Dman\Repositories\Entity\EntityRepository;
 use Dman\Contracts\EntityRepositoryInterface;
@@ -41,6 +43,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             RoleRepositoryInterface::class,
             RoleRepository::class
+        );
+
+        $this->app->bind(
+            PermissionRepositoryInterface::class,
+            PermissionRepository::class
         );
     }
 }

@@ -2,9 +2,10 @@
 
 namespace Dman\Models\Access;
 
+use Dman\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Permission extends Model
+class Permission extends BaseModel
 {
     /**
      * @var string
@@ -15,6 +16,12 @@ class Permission extends Model
      * @var array
      */
     protected $fillable = [
+        'title',
+        'slug',
+        'description'
+    ];
+
+    protected $datatableColumn = [
         'title',
         'slug',
         'description'

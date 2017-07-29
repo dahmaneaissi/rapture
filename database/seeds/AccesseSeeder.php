@@ -77,6 +77,42 @@ class AccesseSeeder extends Seeder {
                 'slug'          => 'roles.delete',
                 'description'   => 'description',
             ],
+            [
+                'id'            => 8,
+                'title'         => 'Show permissions',
+                'slug'          => 'permissions.index',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 9,
+                'title'         => 'Edit permissions',
+                'slug'          => 'permissions.edit',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 10,
+                'title'         => 'Create permissions',
+                'slug'          => 'permissions.create',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 11,
+                'title'         => 'Save permissions',
+                'slug'          => 'permissions.save',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 12,
+                'title'         => 'Update permissions',
+                'slug'          => 'permissions.update',
+                'description'   => 'description',
+            ],
+            [
+                'id'            => 13,
+                'title'         => 'Delete permissions',
+                'slug'          => 'permissions.delete',
+                'description'   => 'description',
+            ],
         ];
 
         foreach ( $permissions as $permission )

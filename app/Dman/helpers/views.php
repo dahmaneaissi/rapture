@@ -1,9 +1,13 @@
 <?php
 
-
 if( !function_exists( 'sort_by' ) )
 {
 
+    /**
+     * @param $column
+     * @param $body
+     * @return string
+     */
     function sort_by( $column , $body )
     {
         $sort       = Request::get('sort') == 'asc' ? 'desc' : 'asc';

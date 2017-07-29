@@ -33,6 +33,11 @@ class Menu extends BaseModel
             'routeName' => 'roles.index',
             'icon'      => 'fa fa-graduation-cap',
         ],
+        [
+            'title'     => 'Permissions',
+            'routeName' => 'permissions.index',
+            'icon'      => 'fa fa-key',
+        ],
     ];
 
     public function getItems()

@@ -52,6 +52,22 @@ Route::group(['prefix' => 'backend' , 'middleware' => ['auth','acl']], function 
     });
 
     /**
+     * Permissions
+     */
+    Route::group(['prefix' => 'permissions'], function () {
+        Route::get('/', [
+            'as' => 'permissions.index' ,
+            'uses' => 'Admin\Access\PermissionController@getIndex'
+        ]);
+        Route::get('create', [ 'as' => 'permissions.create' , 'uses' => 'Admin\Access\PermissionController@getCreate']);
+        Route::post('save', [ 'as' => 'permissions.save' , 'uses' => 'Admin\Access\PermissionController@postSave']);
+        Route::get('{id}/edit', [ 'as' => 'permissions.edit' , 'uses' => 'Admin\Access\RoleController@getEdit']);
+        Route::put('update/{id}', [ 'as' => 'permissions.update' , 'uses' => 'Admin\Access\RoleController@putUpdate']);
+        Route::get('destroy/{id}', [ 'as' => 'permissions.delete' , 'uses' => 'Admin\Access\RoleController@getDestroy']);
+        Route::get('search', [ 'as' => 'permissions.search' , 'uses' => 'Admin\Access\RoleController@getSearch']);
+    });
+
+    /**
      * Dashbord
      */
     Route::get('/', [ 'as' => 'dashbord.index' , 'uses' => 'Admin\DashboardController@getIndex', 'middleware' => 'acl:show-dashbord' ]);
