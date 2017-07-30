@@ -39,7 +39,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-right">
-                                <a href="{{ action('Auth\AuthController@getLogout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{{ action('UserController@getLogout') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

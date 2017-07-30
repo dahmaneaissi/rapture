@@ -15,11 +15,11 @@ class CheckPermission
      */
     public function handle($request, Closure $next )
     {
-
         $permission = $request->route()->getName();
 
         if (!app('Illuminate\Contracts\Auth\Guard')->guest()) {
-            if ($request->user()->hasPermission($permission)) {
+            if ($request->user()->hasPermission($permission))
+            {
                 return $next($request);
             }
         }

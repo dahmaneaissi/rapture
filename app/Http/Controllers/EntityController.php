@@ -22,15 +22,9 @@ class EntityController extends Controller
      */
     protected $repo;
 
-    /**
-     * EntityController constructor.
-     * @param EntityRepositoryInterface $entity
-     */
+
     public function __construct( EntityRepositoryInterface $repo , Request $request )
     {
-
-
-
         $this->repo     = $repo;
         $this->request  = $request;
     }
@@ -42,7 +36,7 @@ class EntityController extends Controller
     {
         $params         = $this->getSortRequestParams( $this->request );
         $data['items']  = $this->repo->getAll( $params );
-        return view('admin.entities.index')->with( $data );
+        return view('admin.entities.list')->with( $data );
     }
 
     /**
@@ -61,7 +55,7 @@ class EntityController extends Controller
     public function postSave(createEntityRequest $request )
     {
         $this->repo->store( $request->all() );
-        return redirect( route('entities.index'))->with(
+        return redirect( route('entities.list'))->with(
             array(
                 'message' => trans('entities.backend.success.save'),
                 'class'     => 'success'
@@ -87,7 +81,7 @@ class EntityController extends Controller
     {
         $this->repo->update( $id ,  $request->all() );
 
-        return redirect( route('entities.index'))->with(
+        return redirect( route('entities.list'))->with(
             array(
                 'message' => trans('entities.backend.success.update'),
                 'class' => 'success'
@@ -102,7 +96,7 @@ class EntityController extends Controller
     public function getDestroy( $id )
     {
         $this->repo->delete( $id );
-        return redirect( route('entities.index'))->with(
+        return redirect( route('entities.list'))->with(
             array(
                 'message' => trans('entities.backend.success.delete'),
                 'class' => 'success'

@@ -61,7 +61,8 @@ class UserController extends Controller {
     public function getLogout()
     {
         Auth::logout();
-        return redirect()->guest('auth/login');
+        session()->flush();
+        return redirect()->guest('/');
     }
 
 }
