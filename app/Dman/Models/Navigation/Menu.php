@@ -25,7 +25,7 @@ class Menu extends BaseModel
         ],
         [
             'title'     => 'User',
-            'routeName' => 'users.list',
+            'routeName' => 'users.index',
             'icon'      => 'fa fa-users',
         ],
         [

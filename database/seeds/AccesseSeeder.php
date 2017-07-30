@@ -36,79 +36,77 @@ class AccesseSeeder extends Seeder {
 
         $permissions = [
             [
-                'id'            => 1,
+                'title'         => 'logout',
+                'slug'          => 'users.logout',
+                'description'   => 'logout',
+            ],
+            [
+                'title'         => 'User index',
+                'slug'          => 'users.index',
+                'description'   => 'user index desc',
+            ],
+            [
                 'title'         => 'Show dashbord',
                 'slug'          => 'dashbord.index',
                 'description'   => 'Show dashbord description',
             ],
             [
-                'id'            => 2,
                 'title'         => 'Show roles',
                 'slug'          => 'roles.index',
                 'description'   => 'description',
             ],
             [
-                'id'            => 3,
                 'title'         => 'Edit roles',
                 'slug'          => 'roles.edit',
                 'description'   => 'description',
             ],
             [
-                'id'            => 4,
                 'title'         => 'Create roles',
                 'slug'          => 'roles.create',
                 'description'   => 'description',
             ],
             [
-                'id'            => 5,
                 'title'         => 'Save roles',
                 'slug'          => 'roles.save',
                 'description'   => 'description',
             ],
             [
-                'id'            => 6,
+
                 'title'         => 'Update roles',
                 'slug'          => 'roles.update',
                 'description'   => 'description',
             ],
             [
-                'id'            => 7,
                 'title'         => 'Delete roles',
                 'slug'          => 'roles.delete',
                 'description'   => 'description',
             ],
             [
-                'id'            => 8,
                 'title'         => 'Show permissions',
                 'slug'          => 'permissions.index',
                 'description'   => 'description',
             ],
             [
-                'id'            => 9,
                 'title'         => 'Edit permissions',
                 'slug'          => 'permissions.edit',
                 'description'   => 'description',
             ],
             [
-                'id'            => 10,
                 'title'         => 'Create permissions',
                 'slug'          => 'permissions.create',
                 'description'   => 'description',
             ],
             [
-                'id'            => 11,
                 'title'         => 'Save permissions',
                 'slug'          => 'permissions.save',
                 'description'   => 'description',
             ],
             [
-                'id'            => 12,
                 'title'         => 'Update permissions',
                 'slug'          => 'permissions.update',
                 'description'   => 'description',
             ],
             [
-                'id'            => 13,
                 'title'         => 'Delete permissions',
                 'slug'          => 'permissions.delete',
                 'description'   => 'description',

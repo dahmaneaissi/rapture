@@ -20,7 +20,10 @@ Route::get('/', function () {
  */
 Route::group(['prefix' => 'backend' , 'middleware' => ['auth','acl']], function () {
 
-    Route::controller('users', 'UserController', [ 'getIndex' => 'users.list' ] );
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', ['as' => 'users.index' , 'uses' => 'UserController@getIndex']);
+        Route::get('logout', ['as' => 'users.logout' , 'uses' => 'UserController@getLogout']);
+    });
 
     /**
      * Entities
