@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin\Access;
 use Dman\Repositories\Access\Permissions\PermissionRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Access\Roles\createRoleRequest;
-use App\Http\Requests\Backend\Access\Roles\updateRoleRequest;
+use App\Http\Requests\Backend\Access\Permissions\createPermissionRequest;
+use App\Http\Requests\Backend\Access\Permissions\updatePermissionRequest;
 
 use Dman\Repositories\Access\Role\RoleRepositoryInterface;
 
@@ -51,7 +51,7 @@ class PermissionController extends Controller
      * @param createRoleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postSave(createRoleRequest $request )
+    public function postSave(createPermissionRequest $request )
     {
         $this->repository->store( $request->all() );
         return redirect( route('permissions.index'))->with(
@@ -77,7 +77,7 @@ class PermissionController extends Controller
      * @param $id
      * @return mixed
      */
-    public function putUpdate( $id , updateRoleRequest $request )
+    public function putUpdate( $id , updatePermissionRequest $request )
     {
         $this->repository->update( $id ,  $request->all() );
 

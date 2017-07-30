@@ -1,8 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\Roles;
+<?php namespace App\Http\Requests\Backend\Access\Permissions;
 
-use App\Http\Requests\Request;
-
-class updateRoleRequest extends RoleRequest {
+class createPermissionRequest extends PermissionRequest {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -23,7 +21,7 @@ class updateRoleRequest extends RoleRequest {
 	{
 		return [
             'title'     => 'required|string',
-            'slug'      => 'required|unique:roles,slug,' . $this->route()->getParameter('id'),
+            'slug'      => 'required|unique:roles',
 		];
 	}
 

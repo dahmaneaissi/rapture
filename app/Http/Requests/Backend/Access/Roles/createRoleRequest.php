@@ -1,8 +1,6 @@
 <?php namespace App\Http\Requests\Backend\Access\Roles;
 
-use App\Http\Requests\Request;
-
-class createRoleRequest extends Request {
+class createRoleRequest extends RoleRequest {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -46,9 +44,7 @@ class createRoleRequest extends Request {
      */
     public function all()
     {
-        $data = parent::all();
-        $data['slug'] = isset( $data['slug'] ) && $data['slug'] ? str_slug( $data['slug'] ) : ( isset( $data['title']  ) ? str_slug( $data['title'] ) : '' );
-        return $data;
+        return parent::all();
     }
 
 }

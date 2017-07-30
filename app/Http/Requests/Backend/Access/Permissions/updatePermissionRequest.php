@@ -1,8 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\Roles;
+<?php namespace App\Http\Requests\Backend\Access\Permissions;
 
-use App\Http\Requests\Request;
-
-class updateRoleRequest extends RoleRequest {
+class updatePermissionRequest extends PermissionRequest {
 
 	/**
 	 * Determine if the user is authorized to make this request.
