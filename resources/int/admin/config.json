@@ -8,11 +8,11 @@
     "templates": "src/templates"
   },
   "destination": {
-    "styles": "../../../public/dist/admin/css",
-    "stylesImages": "../../../public/dist/admin/css/images",
-    "fonts": "../../../public/dist/admin/fonts",
-    "scripts": "../../../public/dist/admin/js",
-    "media": "../../../public/dist/admin/media",
+    "styles": "dist/css",
+    "stylesImages": "dist/css/images",
+    "fonts": "dist/fonts",
+    "scripts": "dist/js",
+    "media": "dist/media",
     "pages": "dist",
     "version": "dist/assets"
   },
@@ -41,6 +41,7 @@
       "src/vendors/bower/bootstrap/js/affix.js"
     ],
     "customScripts": [
+      "src/vendors/bower/admin-lte/plugins/select2/select2.full.js",
       "src/vendors/bower/admin-lte/dist/js/app.js",
       "src/vendors/bower/admin-lte/dist/js/demo.js",
       "src/scripts/application.js"

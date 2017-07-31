@@ -43,8 +43,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Permission</label>
-                                        <select name="slug" class="form-control">
+                                        <label for="perm">Permissions disponibles</label>
+                                        <select id="perm" name="slug" class="form-control select2" style="width: 100%" >
                                             <option value >Selectionnez une permission...</option>
                                             @foreach( $availablePermissions as $availablePermission )
                                                 <option value="{{ $availablePermission }}">{{ $availablePermission }}</option>
