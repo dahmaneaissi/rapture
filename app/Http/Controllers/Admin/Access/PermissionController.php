@@ -48,7 +48,7 @@ class PermissionController extends Controller
     }
 
     /**
-     * @param createRoleRequest $request
+     * @param createPermissionRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postSave(createPermissionRequest $request )
@@ -68,9 +68,9 @@ class PermissionController extends Controller
      */
     public function getEdit( $id )
     {
-        $data['item'] = $this->repository->findById( $id );
-        $data['item'] = $this->repository->getRoutes();
-        return view('admin.access.permissions.form')->with( $data );
+        $item = $this->repository->findById( $id );
+        $availablePermissions = $this->repository->getAvailablePermissions();
+        return view('admin.access.permissions.form', compact('item', 'availablePermissions') );
     }
 
     /**

@@ -17,7 +17,8 @@ class CheckPermission
     {
         $permission = $request->route()->getName();
 
-        if (!app('Illuminate\Contracts\Auth\Guard')->guest()) {
+        if (!app('Illuminate\Contracts\Auth\Guard')->guest())
+        {
             if ($request->user()->hasPermission($permission))
             {
                 return $next($request);

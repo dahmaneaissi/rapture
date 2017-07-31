@@ -1,10 +1,11 @@
 {
-  "name": "bioshock",
+  "name": "rapture",
   "version": "1.0.0",
   "description": "Frontend workflow",
+  "private": true,
   "author": {
-    "name" : "Dahmane Aissi",
-    "email" : "aissi.dahmane@gmail.com"
+    "name": "Dahmane Aissi",
+    "email": "aissi.dahmane@gmail.com"
   },
   "license": "ISC",
   "devDependencies": {
