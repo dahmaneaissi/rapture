@@ -1,63 +1,104 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\User;
+use App\Http\Requests\Backend\User\createUserRequest;
+use App\Http\Requests\Backend\User\updateUserRequest;
 
-use App\Http\Requests\createUserRequest;
-
-use Auth;
-use Config;
-use Redirect;
-
-
+use Dman\Repositories\User\UserRepositoryInterface;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
 
-    public function __construct()
+    /**
+     * @var $repository
+     */
+    protected $repository;
+    /**
+     * @var Request
+     */
+    protected $request;
+
+    public function __construct( UserRepositoryInterface $repository , Request $request )
     {
-        $this->middleware('auth');
+        $this->repository   = $repository;
+        $this->request      = $request;
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getIndex()
     {
-        $data = array();
-
-        $user = new User();
-
-        $data['title'] = 'Liste des utilisateurs';
-        $users = User::orderBy('created_at', 'DESC' );
-        $data['count'] = $user->count();
-        $data['items'] = $user->paginate(  );
-
-        return view('admin/users/list')->with( $data );
+        $items = $this->repository->getAll( $this->request->all() );
+        return view('admin/users/list' , compact( 'items' ));
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCreate()
+    {
+        return view('admin/users/form');
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getEdit( $id )
+    {
+        $item = $this->repository->findById( $id );
+        return view('admin.users.form' , compact('item') );
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getDestroy( $id )
     {
-        User::findOrFail($id);
-        User::destroy( $id );
-        return redirect( route('users') );
+        $this->repository->delete( $id );
+        return redirect( route('users.index'))->with(
+            array(
+                'message'   => trans('users.backend.success.delete'),
+                'class'     => 'success'
+            )
+        );
     }
 
+    /**
+     * @param createUserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postSave( createUserRequest $request )
     {
-        $user = new User();
-
-        $user->name      = $request->name;
-        $user->lastname  = $request->lastname;
-        $user->tel       = $request->tel;
-        $user->email     = $request->email;
-        $user->willaya   = $request->willaya;
-        $user->birthday  = $request->birthday;
-        $user->fb_profil  = $request->fb_profil;
-        $user->role      = 'player';
-        $user->password  = bcrypt( str_random(6) );
-        $user->save();
-
-        return redirect( route('merci') );
+        $this->repository->store( $request->all() );
+        return redirect( route('users.index'))->with(
+            [
+                'message'   => trans('users.backend.success.save'),
+                'class'     => 'success'
+            ]
+        );
     }
 
+    /**
+     * @param updateUserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function putUpdate( $id , updateUserRequest $request )
+    {
+        $this->repository->update( $id ,  $request->all() );
+        return redirect( route('users.index'))->with(
+            array(
+                'message'   => trans('users.backend.success.update'),
+                'class'     => 'success'
+            )
+        );
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getLogout()
     {
         Auth::logout();

@@ -10,7 +10,7 @@ use Illuminate\Routing\Router;
 class PermissionRepository extends BaseRepository implements PermissionRepositoryInterface , CrudableInterface {
 
     /**
-     * PermissionRepositoru constructor.
+     * PermissionRepository constructor.
      * @param Permission $permission
      */
     public function __construct(Permission $permission)
@@ -27,7 +27,6 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
         $allPermission  = $this->getRoutesNames('backend');
         return $allPermission->diff( $permissions );
     }
-
 
     /**
      * @param string $group
@@ -61,6 +60,5 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
 
         return collect($allRoutesNames);
     }
-
 
 }

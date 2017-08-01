@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Dman\Repositories\Access\Permissions\PermissionRepository;
 use Dman\Repositories\Access\Permissions\PermissionRepositoryInterface;
+
+use Dman\Repositories\User\UserRepositoryInterface;
+use Dman\Repositories\User\UserRepository;
+
 use Illuminate\Support\ServiceProvider;
 use Dman\Repositories\Entity\EntityRepository;
 use Dman\Contracts\EntityRepositoryInterface;
@@ -12,7 +16,7 @@ use Dman\Repositories\Access\Role\RoleRepositoryInterface;
 use Dman\Repositories\Access\Role\RoleRepository;
 
 use App\Http\ViewComposers\Backend\MenuComposer;
-
+use Carbon\Carbon;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -22,9 +26,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /**
+         * Views Composers
+         */
         view()->composer(
-            '*', MenuComposer::class
+            'admin.global.main-sidebar', MenuComposer::class
         );
+
+        /**
+         * Carbon Setup
+         */
+        app( Carbon::class )->setLocale( config('app.locale') );
 
     }
 
@@ -35,6 +47,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(
+            UserRepositoryInterface::class,
+            UserRepository::class
+        );
+
         $this->app->bind(
             EntityRepositoryInterface::class,
             EntityRepository::class

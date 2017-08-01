@@ -23,7 +23,7 @@ class Inspire extends Command
 
     /**
      * Execute the console command.
-     *
+     *dd('1');
      * @return mixed
      */
     public function handle()

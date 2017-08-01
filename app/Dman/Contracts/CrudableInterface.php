@@ -31,5 +31,5 @@ interface CrudableInterface
      * @param $id
      * @return mixed
      */
-    public function delete($id);
+    public function delete( $id );
 }

@@ -3,6 +3,7 @@
 namespace App;
 use Dman\Models\Access\Role;
 
+use Dman\Models\BaseModel;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -12,7 +13,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Session;
 
-class User extends Model implements AuthenticatableContract,
+class User extends BaseModel implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
@@ -39,6 +40,10 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * @var array
+     */
+    protected $datatableColumn = [ 'lastname', 'firstname', 'email', 'created_at' ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

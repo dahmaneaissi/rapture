@@ -2,64 +2,65 @@
 
 @section('content')
 
-
-
-
     <section class="content-header">
         <h1>
-            {{ $title }}
+            {{ trans('users.backend.list-title') }}
         </h1>
     </section>
 
     <section class="content">
 
-
-
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ $title }}</h3>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <a href="{{ route('users.create') }}" class="btn btn-success">
+                            <i class="fa fa-plus"></i> Ajouter
+                        </a>
+                    </div>
+                    <div class="col-sm-2">
+                        {!! Form::open(['route' => 'roles.search','method' => 'get']) !!}
 
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fa fa-minus"></i></button>
+                        <div class="input-group input-group">
+                            {!! Form::text('q' , null , array( 'class' => 'form-control' , 'placeholder' => 'Recherche...' ) ) !!}
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-info btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
             <div class="box-body">
                 <table role="grid" class="table table-bordered table-striped dataTable">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Nom & Prénom</th>
-                        <th>Date de naissance</th>
-                        <th>Age an(s)</th>
-                        <th>E-Mail</th>
-                        <th><th>{!! sort_by('telephone' , 'Téléphone' )  !!} </th></th>
-                        <th>Willaya</th>
-                        <th>Date & Heure</th>
-                        <th>Profil Facebook</th>
-                        <th>Photo</th>
+                        <th>{!! sort_by('firstname' , 'Prénom') !!}</th>
+                        <th>{!! sort_by('lastname' , 'Nom') !!}</th>
+                        <th>{!! sort_by('email' , 'E-Mail') !!}</th>
+                        <th>{!! sort_by('created_at' , 'Date & Heure') !!}</th>
+                        <th>{{ trans('global.backend.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    @foreach ( $items as $user )
+                    @foreach ( $items as $item )
 
                         <tr>
-                            <td></td>
-                            <td><i class="fa fa-user fa-fw"></i> {{ $user->name }} {{ $user->lastname }}</td>
-                            <td>{{ $user->birthday }}</td>
-                            <td>{{ $user->birthday }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->tel }}</td>
-                            <td>{{  $user->willaya }}</td>
-                            <td>{{ $user->created_at }}</td>
+                            <td>{{ $item->firstname }}</td>
+                            <td>{{ $item->lastname }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->created_at->diffForHumans() }}</td>
                             <td>
-
-                                {{ $user->fb_profil }}
-                            </td>
-                            <td>
-
-
+                                <a href="{{ route('users.edit' , array( $item ) ) }}" class="btn btn-xs btn-info">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="#" data-href="{{ route( 'users.delete', array( $item ) ) }}" data-toggle="modal" data-target="#sup"  class="btn btn-xs btn-danger">
+                                    <i class="fa fa-close"></i>
+                                </a>
                             </td>
                         </tr>
 
@@ -72,7 +73,7 @@
             <div class="box-footer">
                 <div class="row">
                     <div class="col-sm-5">
-                        Total {{ $count }}
+                        {{ trans('global.backend.total') }} {{ $items->total() }}
                     </div>
                     <div class="col-sm-7">
                         <div class="pull-right">
@@ -83,9 +84,9 @@
             </div>
             <!-- /.box-footer-->
         </div>
-
-
     </section>
+
+    @include('admin.alert.modal.confirmation')
 @stop
 
 

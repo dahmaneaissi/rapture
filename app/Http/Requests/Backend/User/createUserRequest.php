@@ -1,4 +1,4 @@
-<?php namespace App\Http\Requests;
+<?php namespace App\Http\Requests\Backend\User;
 
 use App\Http\Requests\Request;
 
@@ -22,12 +22,10 @@ class createUserRequest extends Request {
 	public function rules()
 	{
 		return [
-            'name' 				=> 'required|string',
+            'firstname' 		=> 'required|string',
             'lastname' 			=> 'required|string',
-            'tel' 				=> 'required|numeric|min:9',
             'email' 			=> 'required|email|unique:users',
-            'willaya' 			=> 'required|integer|min:1|max:48',
-            'conditions' 		=> 'required'
+            'password' 			=> 'required|min:8',
 		];
 	}
 
@@ -39,18 +37,12 @@ class createUserRequest extends Request {
 	public function messages()
 	{
 		return [
-			'name.required' 			=> 'Le champ prénom est obligatoire',
-			'name.alpha' 				=> 'Prénom invalide',
+			'firstname.required' 	    => 'Le champ prénom est obligatoire',
 			'lastname.required' 		=> 'Le champ nom est obligatoire',
-			'lastname.alpha' 			=> 'Nom invalide',
-			'tel.required' 				=> 'Le champ téléphone est obligatoire',
-			'tel.numeric' 				=> 'Numéro de téléphone invalide',
 			'email.required' 			=> 'Le champ email est obligatoire',
 			'email.email' 				=> 'Adresse Mail invalide',
 			'email.unique' 				=> 'Cette adress mail existe deja',
-			'willaya.required' 			=> 'Le champ willaya est obligatoire',
-			'willaya.integer' 			=> 'Wilaya invalide',
-			'conditions.required' 		=> 'L\'acceptation du réglement est obligatoire'
+			'password.required' 	    => 'Le champ mot de passe est obligatoire',
 		];
 	}
 

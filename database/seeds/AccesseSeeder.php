@@ -46,6 +46,36 @@ class AccesseSeeder extends Seeder {
                 'description'   => 'user index desc',
             ],
             [
+                'title'         => 'User create',
+                'slug'          => 'users.create',
+                'description'   => '',
+            ],
+            [
+                'title'         => 'User save',
+                'slug'          => 'users.save',
+                'description'   => '',
+            ],
+            [
+                'title'         => 'User edit',
+                'slug'          => 'users.edit',
+                'description'   => 'user',
+            ],
+            [
+                'title'         => 'User update',
+                'slug'          => 'users.update',
+                'description'   => '',
+            ],
+            [
+                'title'         => 'User search',
+                'slug'          => 'users.search',
+                'description'   => '',
+            ],
+            [
+                'title'         => 'User delete',
+                'slug'          => 'users.delete',
+                'description'   => '',
+            ],
+            [
                 'title'         => 'Show dashbord',
                 'slug'          => 'dashbord.index',
                 'description'   => 'Show dashbord description',
@@ -82,6 +112,11 @@ class AccesseSeeder extends Seeder {
                 'description'   => 'description',
             ],
             [
+                'title'         => 'Roles search',
+                'slug'          => 'roles.search',
+                'description'   => '',
+            ],
+            [
                 'title'         => 'Show permissions',
                 'slug'          => 'permissions.index',
                 'description'   => 'description',
@@ -110,6 +145,11 @@ class AccesseSeeder extends Seeder {
                 'title'         => 'Delete permissions',
                 'slug'          => 'permissions.delete',
                 'description'   => 'description',
+            ],
+            [
+                'title'         => 'permissions search',
+                'slug'          => 'permissions.search',
+                'description'   => '',
             ],
         ];
 
