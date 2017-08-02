@@ -42,7 +42,7 @@ class UserController extends Controller {
      */
     public function getIndex()
     {
-        $items = $this->repository->getAll( $this->request->all() );
+        $items = $this->repository->getUsersWithRoles( $this->request->all() );
         return view('admin/users/list' , compact( 'items' ));
     }
 

@@ -41,6 +41,7 @@
                         <th>{!! sort_by('firstname' , 'Prénom') !!}</th>
                         <th>{!! sort_by('lastname' , 'Nom') !!}</th>
                         <th>{!! sort_by('email' , 'E-Mail') !!}</th>
+                        <th>Roles</th>
                         <th>{!! sort_by('created_at' , 'Date & Heure') !!}</th>
                         <th>{{ trans('global.backend.actions') }}</th>
                     </tr>
@@ -53,6 +54,11 @@
                             <td>{{ $item->firstname }}</td>
                             <td>{{ $item->lastname }}</td>
                             <td>{{ $item->email }}</td>
+                            <th>
+                                @foreach( $item->roles as $role )
+                                        <span class="label label-primary">{{ $role->title }}</span>
+                                    @endforeach
+                            </th>
                             <td>{{ $item->created_at->diffForHumans() }}</td>
                             <td>
                                 <a href="{{ route('users.edit' , array( $item ) ) }}" class="btn btn-xs btn-info">

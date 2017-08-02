@@ -14,6 +14,23 @@ Class UserRepository extends BaseRepository implements UserRepositoryInterface, 
         parent::__construct( $model );
     }
 
+    /**
+     * @param array $params
+     * @return mixed
+     */
+    public function getUsersWithRoles(array $params = [] )
+    {
+        $query = $this->model->with('roles');
+        if( $this->isSortable( $params ) )
+        {
+            $query = $query->customOrder( $params );
+        }else{
+            $query = $query->defaultOrder();
+        }
+
+        return $query->paginate( 10 );
+    }
+
     public function store( array  $data)
     {
         $this->model->firstname = $data['firstname'];
