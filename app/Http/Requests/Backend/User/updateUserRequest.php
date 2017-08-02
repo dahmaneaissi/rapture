@@ -25,7 +25,7 @@ class updateUserRequest extends Request {
             'firstname' 		=> 'required|string',
             'lastname' 			=> 'required|string',
             'email' 			=> 'required|email|unique:users,email,' . $this->route()->getParameter('id'),
-            'password' 			=> 'required|min:8',
+            'password' 			=> 'min:8',
 		];
 	}
 

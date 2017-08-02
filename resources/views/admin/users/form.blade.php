@@ -53,6 +53,11 @@
                                     </div>
 
                                     <div class="form-group">
+                                        {!! Form::label('roles', 'Roles' ) !!}
+                                        {!! Form::select('roles[]', $roles , isset( $item->roles ) ? $item->roles->pluck('id')->toArray() : null , [ 'class' => 'form-control select2' , 'multiple' => 'multiple' , 'data-placeholder' => "Selectionnez un roles..." ] ) !!}
+                                    </div>
+
+                                    <div class="form-group">
                                         {!! Form::label('password', 'Mot de passe' ) !!}
                                         {!! Form::password('password' , [ 'class' => 'form-control' ]) !!}
                                     </div>

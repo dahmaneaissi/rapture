@@ -3,6 +3,7 @@
 use App\Http\Requests\Backend\User\createUserRequest;
 use App\Http\Requests\Backend\User\updateUserRequest;
 
+use Dman\Repositories\Access\Role\RoleRepositoryInterface;
 use Dman\Repositories\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +19,22 @@ class UserController extends Controller {
      */
     protected $request;
 
-    public function __construct( UserRepositoryInterface $repository , Request $request )
+    /**
+     * @var RoleRepositoryInterface
+     */
+    protected $roleRepository;
+
+    /**
+     * UserController constructor.
+     * @param UserRepositoryInterface $repository
+     * @param RoleRepositoryInterface $roleRepository
+     * @param Request $request
+     */
+    public function __construct(UserRepositoryInterface $repository , RoleRepositoryInterface $roleRepository , Request $request )
     {
-        $this->repository   = $repository;
-        $this->request      = $request;
+        $this->repository       = $repository;
+        $this->roleRepository   = $roleRepository;
+        $this->request          = $request;
     }
 
     /**
@@ -38,7 +51,8 @@ class UserController extends Controller {
      */
     public function getCreate()
     {
-        return view('admin/users/form');
+        $roles = $this->roleRepository->allList();
+        return view('admin/users/form' , compact('roles') );
     }
 
     /**
@@ -47,8 +61,9 @@ class UserController extends Controller {
      */
     public function getEdit( $id )
     {
-        $item = $this->repository->findById( $id );
-        return view('admin.users.form' , compact('item') );
+        $item   = $this->repository->findById( $id );
+        $roles  = $this->roleRepository->allList();
+        return view('admin.users.form' , compact('item' , 'roles' ) );
     }
 
     /**
