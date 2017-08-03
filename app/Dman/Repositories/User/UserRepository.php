@@ -31,11 +31,7 @@ Class UserRepository extends BaseRepository implements UserRepositoryInterface, 
         return $query->paginate( 10 );
     }
 
-    /**
-     * @param array $data
-     * @return mixed
-     */
-    public function store(array  $data)
+    public function store( array  $data)
     {
         $this->model->firstname = $data['firstname'];
         $this->model->lastname  = $data['lastname'];
@@ -43,15 +39,9 @@ Class UserRepository extends BaseRepository implements UserRepositoryInterface, 
         $this->model->password  = bcrypt( $data['password'] );
         $this->model->save();
         $this->model->roles()->attach( $data['roles'] );
-        return $this->model;
     }
 
-    /**
-     * @param $id
-     * @param array $data
-     * @return mixed
-     */
-    public function update($id , array $data )
+    public function update( $id , array $data )
     {
         $this->model = $this->model->findOrFail( $id );
         $this->model->firstname = $data['firstname'];
@@ -64,14 +54,5 @@ Class UserRepository extends BaseRepository implements UserRepositoryInterface, 
         $this->model->update();
         $this->model->roles()->sync( $data['roles'] );
         return $this->model;
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function findById( $id )
-    {
-        return $this->model->with('roles')->findOrFail( $id );
     }
 }

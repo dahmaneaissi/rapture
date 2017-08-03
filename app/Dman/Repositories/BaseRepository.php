@@ -37,7 +37,7 @@ abstract class BaseRepository {
      */
     public function findById( $id )
     {
-        return $this->model->findOrFail( $id );
+        return $this->model->with('roles')->findOrFail( $id );
     }
 
     /**

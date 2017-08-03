@@ -25,13 +25,4 @@ Class RoleRepository extends BaseRepository implements RoleRepositoryInterface ,
         return $this->model->all()->pluck('title','id')->toArray();
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function findById( $id )
-    {
-        return $this->model->with('permissions')->findOrFail( $id );
-    }
-
 }

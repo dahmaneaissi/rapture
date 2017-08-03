@@ -62,6 +62,16 @@
                                         {!! Form::password('password' , [ 'class' => 'form-control' ]) !!}
                                     </div>
 
+                                    {{--<div class="form-group">
+                                        <label for="perm">Permissions disponibles</label>
+                                        <select id="perm" name="slug" class="form-control select2" style="width: 100%" >
+                                            <option value >Selectionnez une permission...</option>
+                                            @foreach( $availablePermissions as $availablePermission )
+                                                <option value="{{ $availablePermission }}">{{ $availablePermission }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>--}}
+
                                 </div>
 
                                 <div class="box-footer">
