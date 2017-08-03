@@ -61,4 +61,11 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
         return collect($allRoutesNames);
     }
 
+    /**
+     * @return mixed
+     */
+    public function allList()
+    {
+        return $this->model->all()->pluck('title','id')->toArray();
+    }
 }
