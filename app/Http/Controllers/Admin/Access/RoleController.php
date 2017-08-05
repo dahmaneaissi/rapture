@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Access;
 
+use Dman\Repositories\Access\Permissions\PermissionRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\Roles\createRoleRequest;
@@ -22,9 +23,15 @@ class RoleController extends Controller
      */
     protected $request;
 
-    public function __construct( RoleRepositoryInterface $roleRepository , Request $request )
+    /**
+     * @var PermissionRepositoryInterface
+     */
+    protected $permissionRepository;
+
+    public function __construct( RoleRepositoryInterface $roleRepository , Request $request , PermissionRepositoryInterface $permissionRepository)
     {
-        $this->repository   = $roleRepository;
+        $this->repository               = $roleRepository;
+        $this->permissionRepository     = $permissionRepository;
         $this->request      = $request;
     }
 
@@ -42,7 +49,8 @@ class RoleController extends Controller
      */
     public function getCreate()
     {
-        return view('admin.access.roles.form');
+        $permissions = $this->permissionRepository->allList();
+        return view('admin.access.roles.form' , compact( "permissions" ) );
     }
 
     /**
@@ -66,8 +74,9 @@ class RoleController extends Controller
      */
     public function getEdit( $id )
     {
-        $data['item'] = $this->repository->findById( $id );
-        return view('admin.access.roles.form')->with( $data );
+        $item           = $this->repository->findById( $id );
+        $permissions    = $this->permissionRepository->allList();
+        return view('admin.access.roles.form' , compact('item' , 'permissions') );
     }
 
     /**

@@ -20,8 +20,9 @@ class createRoleRequest extends RoleRequest {
 	public function rules()
 	{
 		return [
-            'title'     => 'required|string',
-            'slug'      => 'required|unique:roles',
+            'title'         => 'required|string',
+            'slug'          => 'required|unique:roles',
+            'permissions'   => 'required',
 		];
 	}
 
@@ -33,9 +34,10 @@ class createRoleRequest extends RoleRequest {
 	public function messages()
 	{
 		return [
-			'title.required'    => 'Le champ Prénom est obligatoire',
-			'slug.required'     => 'Le champ Slug est obligatoire',
-			'slug.unique'       => 'Ce Slug existe déja',
+			'title.required'        => 'Le champ Prénom est obligatoire',
+			'slug.required'         => 'Le champ Slug est obligatoire',
+			'permissions.required'  => 'Le champ permissions est obligatoire',
+			'slug.unique'           => 'Ce Slug existe déja',
 		];
 	}
 

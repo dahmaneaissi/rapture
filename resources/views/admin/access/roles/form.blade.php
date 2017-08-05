@@ -52,6 +52,10 @@
                                         {!! Form::textarea('description', null , [ 'class' => 'form-control' ]) !!}
                                     </div>
 
+                                    <div class="form-group">
+                                        {!! Form::label('permissions', 'Permissions' ) !!}
+                                        {!! Form::select('permissions[]', $permissions , isset( $item->permissions ) ? $item->permissions->pluck('id')->toArray() : null , [ 'class' => 'form-control select2' , 'multiple' => 'multiple' , 'data-placeholder' => "Selectionnez un roles..." ] ) !!}
+                                    </div>
 
                                 </div>
 

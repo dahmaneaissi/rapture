@@ -25,4 +25,48 @@ Class RoleRepository extends BaseRepository implements RoleRepositoryInterface ,
         return $this->model->all()->pluck('title','id')->toArray();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findById( $id )
+    {
+        return $this->model->with('permissions')->findOrFail( $id );
+    }
+
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function store( array  $data )
+    {
+        $this->model->title     = $data['title'];
+        $this->model->slug      = $data['slug'];
+        if( isset( $data['description'] ) )
+        {
+            $this->model->description = $data['description'];
+        }
+        $this->model->save();
+        $this->model->permissions()->attach( $data['permissions'] );
+        return $this->model;
+    }
+
+    /**
+     * @param $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update($id , array $data )
+    {
+        $this->model = $this->model->findOrFail( $id );
+        $this->model->title     = $data['title'];
+        $this->model->slug      = $data['slug'];
+        if( isset( $data['description'] ) )
+        {
+            $this->model->description = $data['description'];
+        }
+        $this->model->update();
+        $this->model->permissions()->sync( $data['permissions'] );
+        return $this->model;
+    }
 }
