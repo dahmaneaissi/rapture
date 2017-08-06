@@ -14,5 +14,7 @@ return [
         'title'         => 'Super Administrateur',
         'slug'          => 'super-administrator',
         'description'   => 'Super Administrateur',
-    ]
+    ],
+
+    
 ];
