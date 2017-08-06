@@ -6,19 +6,20 @@ use App\Events\Access\Roles\RoleUpdated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-use Illuminate\Session\SessionInterface;
+use Illuminate\Http\Request;
 
 class UpdatePermissionsInSession
 {
-    protected $session;
+    protected $request;
+
     /**
      * Create the event listener.
      *
-     * @return void
+     * @param Request $request
      */
-    public function __construct( SessionInterface $session )
+    public function __construct( Request $request )
     {
-        $this->session = $session;
+        $this->request = $request;
     }
 
     /**
@@ -29,6 +30,7 @@ class UpdatePermissionsInSession
      */
     public function handle(RoleUpdated $event)
     {
-        dd( $this->session->get( config('access.permissions.session_key') ) );
+        $this->request->session()->forget( config('access.permissions.session_key') );
+        //dd( $this->request->session()->get( config('access.permissions.session_key') ) );
     }
 }

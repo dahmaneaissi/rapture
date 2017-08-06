@@ -1,4 +1,4 @@
-__construct<?php
+<?php
 
 namespace App\Events;
 

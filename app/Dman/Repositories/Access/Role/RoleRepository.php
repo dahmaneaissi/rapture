@@ -5,6 +5,7 @@ namespace Dman\Repositories\Access\Role;
 use Dman\Contracts\CrudableInterface;
 use Dman\Repositories\BaseRepository;
 use Dman\Models\Access\Role;
+use App\Events\Access\Roles\RoleUpdated;
 
 Class RoleRepository extends BaseRepository implements RoleRepositoryInterface , CrudableInterface {
 
@@ -12,7 +13,7 @@ Class RoleRepository extends BaseRepository implements RoleRepositoryInterface ,
      * RoleRepository constructor.
      * @param Role $model
      */
-    function __construct(Role $model)
+    function __construct(Role $model )
     {
         parent::__construct ( $model );
     }
@@ -52,6 +53,8 @@ Class RoleRepository extends BaseRepository implements RoleRepositoryInterface ,
     }
 
     /**
+     * Update Role and
+     *
      * @param $id
      * @param array $data
      * @return mixed
@@ -67,6 +70,7 @@ Class RoleRepository extends BaseRepository implements RoleRepositoryInterface ,
         }
         $this->model->update();
         $this->model->permissions()->sync( $data['permissions'] );
+        event( new RoleUpdated() );
         return $this->model;
     }
 }

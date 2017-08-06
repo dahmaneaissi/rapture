@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Access\Roles\RoleUpdated' => [
             'App\Listeners\Access\UpdatePermissionsInSession',
         ],
+        'App\Events\User\UserUpdated' => [
+            'App\Listeners\Access\UpdatePermissionsInSession',
+        ]
     ];
 
     /**

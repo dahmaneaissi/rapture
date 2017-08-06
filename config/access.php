@@ -6,7 +6,7 @@ return [
     | Role Super Administrateur
     |--------------------------------------------------------------------------
     |
-    | Informations du SUper administrateur
+    | Informations du Super administrateur
     |
     */
 
@@ -16,5 +16,16 @@ return [
         'description'   => 'Super Administrateur',
     ],
 
-    
+    /*
+    |--------------------------------------------------------------------------
+    | Permissions session key
+    |--------------------------------------------------------------------------
+    |
+    | Session key using to store authenticated user permission
+    |
+    */
+
+    'permissions' => [
+        'session_key' => 'user-permissions'
+    ]
 ];

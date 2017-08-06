@@ -89,14 +89,14 @@ class User extends BaseModel implements AuthenticatableContract,
 
         if( session()->has('user-permissions') )
         {
-            $permissionsArray = session('user-permissions');
+            $permissionsArray = session( config('access.permissions.session_key')  );
         }
         else{
             $permissions = $this->roles->load('permissions')->fetch('permissions')->toArray();
             $permissionsArray = array_unique( array_flatten(array_map(function ($permission) {
                 return array_pluck($permission, 'slug');
             }, $permissions ) ) );
-            session(['user-permissions' => $permissionsArray ] );
+            session([ config('access.permissions.session_key')  => $permissionsArray ] );
         }
 
         return $permissionsArray ? $permissionsArray : array();
