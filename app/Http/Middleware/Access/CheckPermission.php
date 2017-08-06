@@ -19,7 +19,8 @@ class CheckPermission
 
         if (!app('Illuminate\Contracts\Auth\Guard')->guest())
         {
-            if ($request->user()->hasPermission($permission))
+            $idSperAdmin = config('access.super-administrator.slug');
+            if (  $request->user()->hasPermission($permission))
             {
                 return $next($request);
             }

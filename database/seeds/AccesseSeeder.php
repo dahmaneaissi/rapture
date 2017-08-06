@@ -11,13 +11,14 @@ class AccesseSeeder extends Seeder {
     {
         DB::table('roles')->delete();
 
+        $superAdmin = config('access.super-administrator');
         // Je crée le role
         $role = Role::create(
             [
                 'id'            => 1,
-                'title'         => 'Administrateur',
-                'slug'          => 'Administrator',
-                'description'   => 'Chikour houma khalia',
+                'title'         => $superAdmin['title'],
+                'slug'          => $superAdmin['slug'],
+                'description'   => $superAdmin['description'],
             ]
         );
         // J'attache le role au user

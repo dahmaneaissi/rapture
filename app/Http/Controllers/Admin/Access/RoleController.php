@@ -30,9 +30,9 @@ class RoleController extends Controller
 
     public function __construct( RoleRepositoryInterface $roleRepository , Request $request , PermissionRepositoryInterface $permissionRepository)
     {
-        $this->repository               = $roleRepository;
-        $this->permissionRepository     = $permissionRepository;
-        $this->request      = $request;
+        $this->repository = $roleRepository;
+        $this->permissionRepository = $permissionRepository;
+        $this->request = $request;
     }
 
     /**

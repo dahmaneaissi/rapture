@@ -17,9 +17,11 @@
             <div class="box-header with-border">
                 <div class="row">
                     <div class="col-sm-10">
+                        @if( Can( 'entities.create' ) )
                         <a href="{{ route('entities.create') }}" class="btn btn-success">
                             <i class="fa fa-plus"></i> Ajouter
                         </a>
+                        @endif
                     </div>
                     <div class="col-sm-2">
                         {!! Form::open(['route' => 'entities.search','method' => 'get']) !!}

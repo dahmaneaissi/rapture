@@ -17,3 +17,24 @@ if( !function_exists( 'sort_by' ) )
     }
 
 }
+
+
+if( !function_exists( 'Can' ) )
+{
+    /**
+     * @param $permission
+     * @return bool
+     */
+    function Can( $permission )
+    {
+        $userPermissions = session('user-permissions');
+
+        if( is_array( $userPermissions ) && $permission && in_array( $permission , $userPermissions ) )
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+}

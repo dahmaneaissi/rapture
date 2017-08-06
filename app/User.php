@@ -74,9 +74,7 @@ class User extends BaseModel implements AuthenticatableContract,
     protected function checkPermission($perm)
     {
         $permissions = $this->getAllPernissionsFormAllRoles();
-
         $permissionArray = is_array($perm) ? $perm : [$perm];
-
         return count(array_intersect($permissions, $permissionArray));
     }
 
@@ -91,16 +89,15 @@ class User extends BaseModel implements AuthenticatableContract,
 
         if( session()->has('user-permissions') )
         {
-            $permissions = session('user-permissions');
+            $permissionsArray = session('user-permissions');
         }
         else{
             $permissions = $this->roles->load('permissions')->fetch('permissions')->toArray();
-            session(['user-permissions' => $permissions ] );
+            $permissionsArray = array_unique( array_flatten(array_map(function ($permission) {
+                return array_pluck($permission, 'slug');
+            }, $permissions ) ) );
+            session(['user-permissions' => $permissionsArray ] );
         }
-
-        $permissionsArray = array_unique( array_flatten(array_map(function ($permission) {
-            return array_pluck($permission, 'slug');
-        }, $permissions ) ) );
 
         return $permissionsArray ? $permissionsArray : array();
     }
