@@ -22,8 +22,9 @@ class updateRoleRequest extends RoleRequest {
 	public function rules()
 	{
 		return [
-            'title'     => 'required|string',
-            'slug'      => 'required|unique:roles,slug,' . $this->route()->getParameter('id'),
+            'title'         => 'required|string',
+            'slug'          => 'required|unique:roles,slug,' . $this->route()->getParameter('id'),
+            'permissions'   => 'required',
 		];
 	}
 
