@@ -6,8 +6,11 @@ use App\Http\Requests\Backend\User\updateUserRequest;
 use Dman\Repositories\Access\Role\RoleRepositoryInterface;
 use Dman\Repositories\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
 class UserController extends Controller {
 
     /**
@@ -28,10 +31,14 @@ class UserController extends Controller {
      * UserController constructor.
      * @param UserRepositoryInterface $repository
      * @param RoleRepositoryInterface $roleRepository
-     * @param Request $request
+     * @p $this->middleware('auth');
+        $this->middleware('acl', ['except' => ['getLogout'] ] );aram Request $request
      */
     public function __construct(UserRepositoryInterface $repository , RoleRepositoryInterface $roleRepository , Request $request )
     {
+        $this->middleware('auth');
+        $this->middleware('acl', ['except' => ['getLogout'] ] );
+
         $this->repository       = $repository;
         $this->roleRepository   = $roleRepository;
         $this->request          = $request;
@@ -116,8 +123,8 @@ class UserController extends Controller {
      */
     public function getLogout()
     {
-        Auth::logout();
-        session()->flush();
+        auth()->logout();
+        $this->request->session()->flush();
         return redirect()->guest('/');
     }
 

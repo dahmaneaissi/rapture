@@ -24,6 +24,9 @@ class EntityController extends Controller
 
     public function __construct( EntityRepository $repo , Request $request )
     {
+        $this->middleware('auth');
+        $this->middleware('acl' );
+
         $this->repo     = $repo;
         $this->request  = $request;
     }
