@@ -147,6 +147,11 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        /*
+         * Dman Services Providers
+         */
+        App\Providers\InterfacesServiceProvider::class,
+        App\Providers\ViewComposerServiceProvider::class
     ],
 
     /*
