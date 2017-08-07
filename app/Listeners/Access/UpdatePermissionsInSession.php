@@ -25,12 +25,10 @@ class UpdatePermissionsInSession
     /**
      * Handle the event.
      *
-     * @param  RoleUpdated  $event
      * @return void
      */
-    public function handle(RoleUpdated $event)
+    public function handle()
     {
         $this->request->session()->forget( config('access.permissions.session_key') );
-        //dd( $this->request->session()->get( config('access.permissions.session_key') ) );
     }
 }

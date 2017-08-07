@@ -30,7 +30,7 @@ Class RoleRepository extends BaseRepository implements RoleRepositoryInterface ,
      * @param $id
      * @return mixed
      */
-    public function findById( $id )
+    public function getRoleWithPermisions( $id )
     {
         return $this->model->with('permissions')->findOrFail( $id );
     }

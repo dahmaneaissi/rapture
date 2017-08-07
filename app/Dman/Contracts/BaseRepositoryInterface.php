@@ -2,7 +2,7 @@
 
 namespace Dman\Contracts;
 
-interface EntityRepositoryInterface {
+interface BaseRepositoryInterface {
     /**
      * @return mixed
      */

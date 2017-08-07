@@ -74,7 +74,7 @@ class RoleController extends Controller
      */
     public function getEdit( $id )
     {
-        $item           = $this->repository->findById( $id );
+        $item           = $this->repository->getRoleWithPermisions( $id );
         $permissions    = $this->permissionRepository->allList();
         return view('admin.access.roles.form' , compact('item' , 'permissions') );
     }

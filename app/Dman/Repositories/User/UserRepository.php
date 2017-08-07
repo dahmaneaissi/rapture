@@ -4,13 +4,20 @@ namespace Dman\Repositories\User;
 use App\User;
 use Dman\Contracts\CrudableInterface;
 use Dman\Repositories\BaseRepository;
-use App\Events\Access\Roles\RoleUpdated;
+use App\Events\User\UserUpdated;
 
 Class UserRepository extends BaseRepository implements UserRepositoryInterface, CrudableInterface {
 
+    /**
+     * @var
+     */
     protected $role;
 
-    function __construct( User $model )
+    /**
+     * UserRepository constructor.
+     * @param User $model
+     */
+    function __construct(User $model )
     {
         parent::__construct( $model );
     }
@@ -64,7 +71,7 @@ Class UserRepository extends BaseRepository implements UserRepositoryInterface, 
         }
         $this->model->update();
         $this->model->roles()->sync( $data['roles'] );
-        event(new UserUpdated());
+        event( new UserUpdated() );
         return $this->model;
     }
 

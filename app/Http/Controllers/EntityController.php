@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Dman\Repositories\Entity\EntityRepository;
 use Dman\Traits\SorttabeleTrait;
-
-use Dman\Contracts\EntityRepositoryInterface;
 
 use App\Http\Requests\createEntityRequest;
 use App\Http\Requests\updateEntityRequest;
@@ -23,7 +22,7 @@ class EntityController extends Controller
     protected $repo;
 
 
-    public function __construct( EntityRepositoryInterface $repo , Request $request )
+    public function __construct( EntityRepository $repo , Request $request )
     {
         $this->repo     = $repo;
         $this->request  = $request;
@@ -104,8 +103,8 @@ class EntityController extends Controller
         );
     }
 
+
     /**
-     * @param Request $request
      * @return View
      */
     public function getSearch()
