@@ -65,7 +65,7 @@ Class UserRepository extends BaseRepository implements UserRepositoryInterface, 
         $this->model->firstname = $data['firstname'];
         $this->model->lastname  = $data['lastname'];
         $this->model->email     = $data['email'];
-        if( isset( $data['password'] ) )
+        if( isset( $data['password'] ) && !empty($data['password']) )
         {
             $this->model->password = bcrypt( $data['password'] );
         }

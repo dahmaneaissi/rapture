@@ -66,6 +66,6 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
      */
     public function allList()
     {
-        return $this->model->all()->pluck('title','id')->toArray();
+        return $this->model->all()->pluck('slug','id')->toArray();
     }
 }
