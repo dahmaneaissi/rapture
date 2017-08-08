@@ -17,11 +17,13 @@
             <li class="header">NAVIGATION</li>
 
             @foreach( $menuItems as $itemMenu )
-                <li class="treeview">
-                    @if( isset( $itemMenu['routeName'] ) && $itemMenu['routeName'] )
-                        <a href="{{ route( $itemMenu['routeName'] ) }}"><i class="fa {{ $itemMenu['icon'] }}"></i> <span>{{ $itemMenu['title'] }}</span></a>
-                    @endif
-                </li>
+                @if(  Can( $itemMenu['routeName'] ) )
+                    <li class="treeview">
+                        @if( isset( $itemMenu['routeName'] ) && $itemMenu['routeName'] )
+                            <a href="{{ route( $itemMenu['routeName'] ) }}"><i class="fa {{ $itemMenu['icon'] }}"></i> <span>{{ $itemMenu['title'] }}</span></a>
+                        @endif
+                    </li>
+                @endif
             @endforeach
 
         </ul>

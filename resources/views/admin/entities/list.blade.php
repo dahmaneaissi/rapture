@@ -24,18 +24,20 @@
                         @endif
                     </div>
                     <div class="col-sm-2">
-                        {!! Form::open(['route' => 'entities.search','method' => 'get']) !!}
+                        @if( Can( 'entities.search' ) )
 
-                        <div class="input-group input-group">
-                            {!! Form::text('q' , null , array( 'class' => 'form-control' , 'placeholder' => 'Recherche...' ) ) !!}
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-info btn-flat">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
+                            {!! Form::open(['route' => 'entities.search','method' => 'get']) !!}
+                            <div class="input-group input-group">
+                                {!! Form::text('q' , null , array( 'class' => 'form-control' , 'placeholder' => 'Recherche...' ) ) !!}
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-info btn-flat">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            {!! Form::close() !!}
 
-                        {!! Form::close() !!}
+                        @endif
                     </div>
                 </div>
 
@@ -68,16 +70,21 @@
                             <td>{{ $item->twitter }}</td>
                             <td>{{ $item->instagram }}</td>
                             <td>
-
                                 <i style="color: @if( $item->active ) #008d4c @else #dd4b39 @endif" class="fa fa-eye"></i>
                             </td>
                             <td>
-                                <a href="{{ route('entities.edit' , array( $item ) ) }}" class="btn btn-xs btn-info">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a href="#" data-href="{{ route( 'entities.delete', array( $item ) ) }}" data-toggle="modal" data-target="#sup"  class="btn btn-xs btn-danger">
-                                    <i class="fa fa-close"></i>
-                                </a>
+
+                                @if( Can( 'entities.edit' ) )
+                                    <a href="{{ route('entities.edit' , array( $item ) ) }}" class="btn btn-xs btn-info">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                @endif
+
+                                @if( Can( 'entities.delete' ) )
+                                    <a href="#" data-href="{{ route( 'entities.delete', array( $item ) ) }}" data-toggle="modal" data-target="#sup"  class="btn btn-xs btn-danger">
+                                        <i class="fa fa-close"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

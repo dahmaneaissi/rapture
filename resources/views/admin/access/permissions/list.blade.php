@@ -17,23 +17,29 @@
             <div class="box-header with-border">
                 <div class="row">
                     <div class="col-sm-10">
-                        <a href="{{ route('permissions.create') }}" class="btn btn-success">
-                            <i class="fa fa-plus"></i> Ajouter
-                        </a>
+
+                        @if( Can( 'permissions.create' ) )
+                            <a href="{{ route('permissions.create') }}" class="btn btn-success">
+                                <i class="fa fa-plus"></i> Ajouter
+                            </a>
+                        @endif
+
                     </div>
                     <div class="col-sm-2">
-                        {!! Form::open(['route' => 'permissions.search','method' => 'get']) !!}
+                        @if( Can( 'permissions.search' ) )
 
-                        <div class="input-group input-group">
-                            {!! Form::text('q' , null , array( 'class' => 'form-control' , 'placeholder' => 'Recherche...' ) ) !!}
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-info btn-flat">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
+                            {!! Form::open(['route' => 'permissions.search','method' => 'get']) !!}
+                            <div class="input-group input-group">
+                                {!! Form::text('q' , null , array( 'class' => 'form-control' , 'placeholder' => 'Recherche...' ) ) !!}
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-info btn-flat">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            {!! Form::close() !!}
 
-                        {!! Form::close() !!}
+                        @endif
                     </div>
                 </div>
 
@@ -62,12 +68,18 @@
                                 <td>{{ $item->description }} </td>
 
                                 <td>
-                                    <a href="{{ route('permissions.edit' , array( $item ) ) }}" class="btn btn-xs btn-info">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-href="{{ route( 'permissions.delete', array( $item ) ) }}" data-toggle="modal" data-target="#sup"  class="btn btn-xs btn-danger">
-                                        <i class="fa fa-close"></i>
-                                    </a>
+
+                                    @if( Can( 'permissions.edit' ) )
+                                        <a href="{{ route('permissions.edit' , array( $item ) ) }}" class="btn btn-xs btn-info">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endif
+
+                                    @if( Can( 'permissions.delete' ) )
+                                        <a href="#" data-href="{{ route( 'permissions.delete', array( $item ) ) }}" data-toggle="modal" data-target="#sup"  class="btn btn-xs btn-danger">
+                                            <i class="fa fa-close"></i>
+                                        </a>
+                                    @endif
 
                                 </td>
                             </tr>
