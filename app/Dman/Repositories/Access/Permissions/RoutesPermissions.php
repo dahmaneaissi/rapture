@@ -63,7 +63,7 @@ class RoutesPermissions implements PermissionSourceInterface{
      */
     private function getStoredPermissions()
     {
-        return $this->permission->get(['slug'])->pluck('slug')->toArray();
+        return $this->permission->all()->pluck('slug')->toArray();
     }
 
 }

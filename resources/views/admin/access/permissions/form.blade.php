@@ -45,10 +45,16 @@
                                     <div class="form-group">
                                         <label for="perm">Permissions disponibles</label>
                                         <select id="perm" name="slug" class="form-control select2" style="width: 100%" >
-                                            <option value >Selectionnez une permission...</option>
+                                            <option value >Sélectionner une permission...</option>
+
+                                            @if(  isset( $item->id ) )
+                                                <option value="{{ $item->id }}" selected="selected">{{ $item->slug }}</option>
+                                            @endif
+
                                             @foreach( $availablePermissions as $availablePermission )
                                                 <option value="{{ $availablePermission }}">{{ $availablePermission }}</option>
                                             @endforeach
+
                                         </select>
                                     </div>
 

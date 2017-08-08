@@ -33,7 +33,7 @@ class updatePermissionRequest extends PermissionRequest {
 	public function messages()
 	{
 		return [
-			'title.required'    => 'Le champ Prénom est obligatoire',
+			'title.required'    => 'Le champ title est obligatoire',
 			'slug.required'     => 'Le champ Slug est obligatoire',
 			'slug.unique'       => 'Ce Slug existe déja',
 		];
