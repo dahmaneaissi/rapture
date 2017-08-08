@@ -5,17 +5,25 @@ namespace Dman\Repositories\Access\Permissions;
 use Dman\Contracts\CrudableInterface;
 use Dman\Models\Access\Permission;
 use Dman\Repositories\BaseRepository;
-use Illuminate\Routing\Router;
 
+
+/**
+ * Class PermissionRepository
+ * @package Dman\Repositories\Access\Permissions
+ */
 class PermissionRepository extends BaseRepository implements PermissionRepositoryInterface , CrudableInterface {
+
+    protected $permissionSource;
 
     /**
      * PermissionRepository constructor.
      * @param Permission $permission
+     * @param PermissionSourceInterface $PermissionSource
      */
-    public function __construct(Permission $permission)
+    public function __construct( Permission $permission , PermissionSourceInterface  $PermissionSource )
     {
-        parent::__construct($permission);
+        parent::__construct( $permission );
+        $this->permissionSource = $PermissionSource;
     }
 
     /**
@@ -24,41 +32,8 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
     public function getAvailablePermissions()
     {
         $permissions    = $this->model->get(['slug'])->pluck('slug');
-        $allPermission  = $this->getRoutesNames('backend');
+        $allPermission  = collect( $this->permissionSource->getAvailablePermissions('backend') );
         return $allPermission->diff( $permissions );
-    }
-
-    /**
-     * @param string $group
-     * @return array|\Illuminate\Support\Collection
-     */
-    private function getRoutesNames($group = 'backend')
-    {
-        if( !$group )
-        {
-            return [];
-        }
-
-        $routes = app(Router::class)->getRoutes();
-
-        $allRoutesNames = [];
-
-        foreach ($routes as  $route)
-        {
-            $prefix = $route->getPrefix();
-
-            if( str_contains($prefix , $group ) )
-            {
-                $routeName = $route->getName();
-                if( !is_null( $routeName ) )
-                {
-                    $allRoutesNames[] = $routeName;
-                }
-            }
-
-        }
-
-        return collect($allRoutesNames);
     }
 
     /**

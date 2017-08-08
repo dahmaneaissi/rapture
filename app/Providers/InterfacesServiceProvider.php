@@ -16,6 +16,9 @@ use Dman\Repositories\Entity\EntityRepositoryInterface;
 use Dman\Repositories\Access\Role\RoleRepositoryInterface;
 use Dman\Repositories\Access\Role\RoleRepository;
 
+use Dman\Repositories\Access\Permissions\RoutesPermissions;
+use Dman\Repositories\Access\Permissions\PermissionSourceInterface;
+
 class InterfacesServiceProvider extends ServiceProvider
 {
     /**
@@ -44,5 +47,11 @@ class InterfacesServiceProvider extends ServiceProvider
             PermissionRepositoryInterface::class,
             PermissionRepository::class
         );
+
+        $this->app->bind(
+            PermissionSourceInterface::class,
+            RoutesPermissions::class
+        );
+
     }
 }
