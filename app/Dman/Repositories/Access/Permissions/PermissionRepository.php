@@ -6,7 +6,6 @@ use Dman\Contracts\CrudableInterface;
 use Dman\Models\Access\Permission;
 use Dman\Repositories\BaseRepository;
 
-
 /**
  * Class PermissionRepository
  * @package Dman\Repositories\Access\Permissions
@@ -27,13 +26,11 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
     public function getAvailablePermissions()
     {
-        $permissions    = $this->model->get(['slug'])->pluck('slug');
-        $allPermission  = collect( $this->permissionSource->getAvailablePermissions('backend') );
-        return $allPermission->diff( $permissions );
+       return $this->permissionSource->getAvailablePermissions('backend') ;
     }
 
     /**
@@ -43,4 +40,5 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
     {
         return $this->model->all()->pluck('slug','id')->toArray();
     }
+
 }
