@@ -48,7 +48,7 @@
                                             <option value >Sélectionner une permission...</option>
 
                                             @if(  isset( $item->id ) )
-                                                <option value="{{ $item->id }}" selected="selected">{{ $item->slug }}</option>
+                                                <option value="{{ $item->slug }}" selected="selected">{{ $item->slug }}</option>
                                             @endif
 
                                             @foreach( $availablePermissions as $availablePermission )

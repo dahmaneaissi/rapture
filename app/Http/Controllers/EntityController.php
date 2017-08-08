@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Dman\Repositories\Entity\EntityRepository;
+use Dman\Repositories\Entity\EntityRepositoryInterface;
 use Dman\Traits\SorttabeleTrait;
 
 use App\Http\Requests\createEntityRequest;
@@ -22,7 +22,7 @@ class EntityController extends Controller
     protected $repo;
 
 
-    public function __construct( EntityRepository $repo , Request $request )
+    public function __construct( EntityRepositoryInterface $repo , Request $request )
     {
         $this->middleware('auth');
         $this->middleware('acl' );
@@ -112,9 +112,9 @@ class EntityController extends Controller
      */
     public function getSearch()
     {
-        $q = $this->request->get('q');
-        $data['items'] = $this->repo->search( $q );
-        return view('admin.entities.list')->with( $data );
+        $q      = $this->request->get('q');
+        $items  = $this->repo->search( $q );
+        return view('admin.entities.list', compact( 'items') ) ;
     }
 
 }

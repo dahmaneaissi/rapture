@@ -128,4 +128,14 @@ class UserController extends Controller {
         return redirect()->guest('/');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getSearch()
+    {
+        $q      = $this->request->get('q');
+        $items  = $this->repository->search( $q );
+        return view('admin.users.list' , compact( "items" ) );
+    }
+
 }

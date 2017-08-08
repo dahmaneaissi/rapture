@@ -83,4 +83,17 @@ Class UserRepository extends BaseRepository implements UserRepositoryInterface, 
     {
         return $this->model->with('roles')->findOrFail( $id );
     }
+
+    /**
+     * @param $q
+     * @return mixed
+     */
+    public function search( $q )
+    {
+        return $this->model->where( 'firstname' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'lastname' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'email' ,'LIKE', '%'.$q.'%' )
+            ->orderBy( 'created_at', 'DESC' )->paginate( 10 );
+    }
+
 }

@@ -112,4 +112,15 @@ class RoleController extends Controller
             )
         );
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getSearch()
+    {
+        $q      = $this->request->get('q');
+        $items  = $this->repository->search( $q );
+        return view('admin.access.roles.list' , compact( "items" ) );
+    }
+
 }

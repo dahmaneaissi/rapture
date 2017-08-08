@@ -73,4 +73,16 @@ Class RoleRepository extends BaseRepository implements RoleRepositoryInterface ,
         event( new RoleUpdated() );
         return $this->model;
     }
+
+    /**
+     * @param $q
+     * @return mixed
+     */
+    public function search( $q )
+    {
+        return $this->model->where( 'title' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'slug' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'description' ,'LIKE', '%'.$q.'%' )
+            ->orderBy( 'created_at', 'DESC' )->paginate( 10 );
+    }
 }

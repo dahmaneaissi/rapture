@@ -25,7 +25,7 @@
                     <div class="col-sm-2">
                         @if( Can( 'users.search' ) )
 
-                            {!! Form::open(['route' => 'roles.search','method' => 'get']) !!}
+                            {!! Form::open(['route' => 'users.search','method' => 'get']) !!}
                             <div class="input-group input-group">
                                 {!! Form::text('q' , null , array( 'class' => 'form-control' , 'placeholder' => 'Recherche...' ) ) !!}
                                 <span class="input-group-btn">

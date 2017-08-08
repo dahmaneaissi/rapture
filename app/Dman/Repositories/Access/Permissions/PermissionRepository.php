@@ -41,4 +41,16 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
         return $this->model->all()->pluck('slug','id')->toArray();
     }
 
+    /**
+     * @param $q
+     * @return mixed
+     */
+    public function search( $q )
+    {
+        return $this->model->where( 'title' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'slug' ,'LIKE', '%'.$q.'%' )
+            ->orWhere( 'description' ,'LIKE', '%'.$q.'%' )
+            ->orderBy( 'created_at', 'DESC' )->paginate( 10 );
+    }
+
 }
