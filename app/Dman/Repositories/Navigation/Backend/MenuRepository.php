@@ -5,6 +5,8 @@ use Dman\Contracts\Navigation\MenuRepositoryInterface;
 
 use Dman\Repositories\BaseRepository;
 use Dman\Models\Navigation\Menu;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 
 /**
@@ -19,16 +21,47 @@ class MenuRepository extends BaseRepository implements MenuRepositoryInterface {
     protected $model;
 
     /**
-     * @param Menu $model
+     * @var Request
      */
-    function __construct( Menu $model )
+    protected $request;
+
+    /**
+     * MenuRepository constructor.
+     * @param Menu $model
+     * @param Request $request
+     */
+    function __construct(Menu $model , Request $request )
     {
         parent::__construct($model);
+        $this->request = $request;
     }
 
-
-    public function getAll( array $params = [])
+    /**
+     * @param array $params
+     * @return array
+     */
+    public function getAll(array $params = [])
     {
-        return $this->model->getItems();
+        $items =  $this->model->getItems();
+        return $this->sutupItems($items);
     }
+
+    /**
+     * @param array $items
+     * @return array
+     */
+    private function sutupItems(array $items )
+    {
+        $menu = [];
+
+        $routeName = $this->request->route()->getName();
+        foreach ($items as $item)
+        {
+            $item['current'] = $item['routeName'] == $routeName ? true : false;
+            $menu[] = $item;
+        }
+
+        return $menu;
+    }
+
 }

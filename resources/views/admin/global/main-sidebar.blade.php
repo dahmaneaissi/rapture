@@ -18,7 +18,7 @@
 
             @foreach( $menuItems as $itemMenu )
                 @if(  Can( $itemMenu['routeName'] ) )
-                    <li class="treeview">
+                    <li class="treeview @if( $itemMenu['current'] ) active @endif">
                         @if( isset( $itemMenu['routeName'] ) && $itemMenu['routeName'] )
                             <a href="{{ route( $itemMenu['routeName'] ) }}"><i class="fa {{ $itemMenu['icon'] }}"></i> <span>{{ $itemMenu['title'] }}</span></a>
                         @endif
